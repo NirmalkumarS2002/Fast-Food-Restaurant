@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BiteRush - Fast Food Restaurant</title>
+    <title>Stackly - Fast Food Restaurant</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,35 +133,106 @@
 
         .primary-btn,
         .secondary-btn {
+            position: relative;
+            overflow: hidden;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
             text-decoration: none;
             padding: 15px 27px;
             border-radius: 30px;
+
             font-size: 15px;
             font-weight: 700;
 
-            transition: 0.3s;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
         }
+
+        /* Arrow */
+        .primary-btn span,
+        .secondary-btn span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* =========================
+   PRIMARY BUTTON
+========================= */
 
         .primary-btn {
             background: #ffcc33;
             color: #111;
         }
 
-        .primary-btn:hover {
-            transform: translateY(-3px);
-            background: #ffd95c;
+        /* Shine animation */
+        .primary-btn::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: -100%;
+
+            width: 60%;
+            height: 100%;
+
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.5),
+                    transparent);
+
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
         }
+
+        .primary-btn:hover {
+            transform: translateY(-5px) scale(1.03);
+
+            background: #ffd95c;
+
+            box-shadow:
+                0 12px 25px rgba(255, 204, 51, 0.35);
+        }
+
+        .primary-btn:hover::before {
+            left: 130%;
+        }
+
+        .primary-btn:hover span {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================
+   SECONDARY BUTTON
+========================= */
 
         .secondary-btn {
             color: white;
+
             border: 1px solid rgba(255, 255, 255, 0.6);
+
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .secondary-btn:hover {
+            transform: translateY(-5px) scale(1.03);
+
             background: white;
             color: #111;
+
+            box-shadow:
+                0 12px 25px rgba(255, 255, 255, 0.15);
         }
 
+        .secondary-btn:hover span {
+            transform: translateX(5px);
+        }
 
         /* ================= FOOD CARD ================= */
 
@@ -329,11 +400,15 @@
                 flex-direction: column;
                 width: 100%;
             }
+            
 
             .primary-btn,
             .secondary-btn {
                 width: 100%;
                 text-align: center;
+
+                display: flex;
+                justify-content: center;
             }
 
             .features {
@@ -455,10 +530,12 @@
 
                     <a href="#" class="primary-btn">
                         Explore Menu
+                        <span class="material-symbols-outlined">arrow_right_alt</span>
                     </a>
 
                     <a href="#" class="secondary-btn">
                         Order Online
+                        <span class="material-symbols-outlined">arrow_right_alt</span>
                     </a>
 
                 </div>
@@ -540,6 +617,96 @@
         </div>
 
     </section>
+
+
+    <footer class="footer-section reveal">
+
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+                </div>
+
+               <p>What's Inside: Fresh Flavors, Tasty Deals, New Menu & More</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button type="submit" class="subscribe">Subscribe</button>
+                </div>
+                <p class="ferror"></p>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Quick Links</h2>
+
+                <div class="store-links">
+                    <a href="404.html">Home</a>
+                    <a href="404.html">About</a>
+                    <a href="404.html">Services</a>
+                    <a href="404.html">Blogs</a>
+                    <a href="404.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Explore</h2>
+
+                <div class="store-links">
+                    <a href="index.html">Our Menu</a>
+                    <a href="menu.html">Burgers & Fries</a>
+                    <a href="menu.html">Pizza & Snacks</a>
+                    <a href="offers.html">Today's Deals</a>
+                    <a href="contact.html">Order Now</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                        
+                            <p class="errorpage"> 25, Daniel Street, Chennai</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p class="errorpage">admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p class="errorpage">+91 09876 54321</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
+            </div>
+        </div>
+
+    </footer>
+
 
     <script src="./js/script.js"></script>
 </body>
