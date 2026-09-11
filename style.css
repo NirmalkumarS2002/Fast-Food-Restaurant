@@ -1,0 +1,517 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+body {
+    overflow-x: hidden;
+    font-family: "DM Sans", sans-serif;
+    scrollbar-width: none;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --header1: #191919;
+    --header2: #141212;
+    --border: 1px solid rgba(128, 128, 128, 0.295);
+    --pcolor: #FFCC33;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+}
+
+.header.active {
+    position: fixed;
+}
+
+.header1 {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: var(--border);
+    padding: 10px 10px;
+}
+
+.header.active .header1 {
+    background: var(--header1);
+    display: none;
+}
+
+
+.nav-time {
+    display: flex;
+    align-content: center;
+    gap: 15px;
+}
+
+.nav-sotial-icons {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+.header1 div a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-contact-details {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-time,
+.nav-contact-details a {
+    font-size: 15px;
+    transition: .5s ease;
+}
+
+.nav-time a:hover,
+.nav-contact-details a:hover {
+    color: var(--pcolor);
+}
+
+.nav-time a span,
+.nav-contact-details a span {
+    font-size: 20px;
+    color: var(--pcolor);
+}
+
+.nav-sotial-icons a {
+    font-size: 20px;
+    border: var(--border);
+    justify-content: center;
+    height: 38px;
+    width: 38px;
+    border-radius: 7px;
+    transition: .5s ease;
+}
+
+.nav-sotial-icons a:hover {
+    color: var(--pcolor);
+    background: rgba(255, 255, 255, 0.137);
+    transform: rotate(360deg);
+}
+
+.nav-contact-details {
+    display: flex;
+    align-content: center;
+    gap: 30px;
+}
+
+.header2 {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.3fr;
+    gap: 20px;
+    padding: 10px 30px;
+    align-items: center;
+}
+
+.header.active .header2 {
+    background: var(--header2);
+}
+
+x .header2 a span {
+    font-size: 20px;
+    color: var(--pcolor);
+}
+
+.company-logo img {
+    width: 180px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.nav-bar li {
+    list-style: none;
+}
+
+.nav-bar li a {
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    transition: .5s ease;
+    position: relative;
+    padding: 7px 12px;
+    border-radius: 30px;
+    font-weight: bolder;
+
+}
+
+
+.nav-bar li .active {
+    background: var(--pcolor);
+    color: black;
+}
+
+.nav-bar li a:hover {
+    background: var(--pcolor);
+    color: black;
+}
+
+.search-sections {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+}
+
+.search-sections a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: .5s ease;
+}
+
+.search-sections a:hover {
+    color: var(--pcolor);
+}
+
+.search-sections a span{
+    color: var(--pcolor);
+}
+
+.login-btn {
+    padding: 15px 40px;
+    background: var(--pcolor);
+    border-radius: 30px;
+    font-size: 15px;
+    color: black !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+.login-btn span {
+    color: black !important;
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.login-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: skewX(-25deg);
+    transition: 0.6s ease;
+}
+
+.login-btn:hover::before {
+    left: 130%;
+}
+
+.login-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+.menu-btn {
+    color: white;
+    display: none;
+    cursor: pointer;
+}
+
+.menu-container {
+    display: none;
+}
+
+.sidebar-logo-container {
+    display: none;
+}
+
+
+
+@media (max-width:1100px) {
+
+    .nav-container {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background: var(--header2);
+        width: 320px;
+        transition: .6s ease;
+        transform: translateX(-100%);
+        z-index: 9999;
+    }
+
+    .nav-container.active {
+        transform: translateX(0);
+    }
+
+    .sidebar-logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 15px;
+        border-bottom: var(--border);
+        padding-bottom: 12px;
+    }
+
+    .s-logo {
+        width: 160px;
+    }
+
+    .close-btn {
+        color: white;
+        cursor: pointer;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 20px;
+    }
+
+    .header1,
+    .header2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .nav-sotial-icons {
+        display: none;
+    }
+
+
+    .menu-btn {
+        display: block;
+        font-size: 22px;
+        color: var(--pcolor);
+    }
+
+    .search-sections {
+        display: none;
+    }
+
+    .menu-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .menu-container a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .menu-container a span {
+        font-size: 22px !important;
+        color: var(--pcolor);
+    }
+
+}
+
+@media (max-width:800px) {
+
+    .nav-time a,
+    .nav-contact-details a {
+        font-size: 15px;
+        text-wrap: nowrap;
+    }
+
+    .nav-time a span,
+    .nav-contact-details a span {
+        font-size: 18px;
+    }
+
+    .company-logo img {
+        width: 140px;
+    }
+}
+
+@media (max-width:690px) {
+    .nav-time {
+        display: none;
+    }
+
+    .header1 {
+        grid-template-columns: 1fr;
+        padding: 10px 10px;
+    }
+
+    .header2 {
+        padding: 10px 10px;
+    }
+
+    .nav-contact-details {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10;
+    }
+
+    .nav-contact-details a {
+        font-size: 13px;
+    }
+
+    .nav-contact-details a span {
+        font-size: 16px;
+    }
+
+}
+
+
+
+.hero-btn {
+    position: relative;
+    overflow: hidden;
+
+    padding: 17px 30px;
+    font-size: 15px;
+    border: none;
+    margin-bottom: 20px;
+
+    background: var(--pcolor);
+    font-weight: 600;
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+    transition: box-shadow 0.4s ease;
+}
+
+/* Shine */
+.hero-btn::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(110deg,
+            transparent 0%,
+            transparent 35%,
+            rgba(255, 255, 255, 0.15) 45%,
+            rgba(255, 255, 255, 0.75) 50%,
+            rgba(255, 255, 255, 0.15) 55%,
+            transparent 65%,
+            transparent 100%);
+
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+
+    pointer-events: none;
+}
+
+/* Shine animation */
+.hero-btn:hover::before {
+    left: 140%;
+}
+
+/* Soft glow */
+.hero-btn:hover {
+    box-shadow:
+        0 0 10px rgba(248, 163, 34, 0.35),
+        0 0 25px rgba(248, 163, 34, 0.25);
+}
+
+/* Arrow */
+.hero-btn span {
+    font-size: 20px;
+    color: black;
+    transition: transform 0.4s ease;
+}
+
+.hero-btn:hover span {
+    transform: translateX(6px);
+}
+
+
+/* 
+.reveal,
+.reveal-right,
+.reveal-left {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal {
+    transform: translateY(-30px);
+}
+
+.reveal-right {
+    transform: translateX(60px);
+}
+
+.reveal-left {
+    transform: translateX(-60px);
+}
+
+.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.delay-5 {
+    transition-delay: 0.5s;
+}
+
+.reveal.showed,
+.reveal-left.showed,
+.reveal-right.showed {
+    opacity: 1;
+    transform: translate(0, 0);
+} */
+
+.ferror {
+    margin-block: 30px;
+    color: black;
+    font-size: 13px;
+}
