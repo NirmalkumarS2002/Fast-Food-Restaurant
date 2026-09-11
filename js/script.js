@@ -33,28 +33,10 @@ errorpage.forEach((error)=>{
 })
 
 
-// reveal animation 
-
-// const observer = new IntersectionObserver((entries) => {
-//     entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//             entry.target.classList.add("showed");
-//         }
-//     })
-// }, {
-//     root: null,
-//     rootMargin: "0px",
-//     threshold: 0.2
-// })
-
-// document.querySelectorAll(".reveal, .reveal-right, .reveal-left").forEach((el) => {
-//     observer.observe(el)
-// })
-
 //footer js
 
-const footerMail = document.getElementById("footer-mail");
-const footerBtn = document.querySelector(".footer-btn");
+const footerMail = document.getElementById("footer-email");
+const footerBtn = document.querySelector(".subscribe");
 const ferror = document.querySelector(".ferror");
 
 footerBtn.addEventListener("click", (e) => {

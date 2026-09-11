@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Contact Page Sections</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+
+    <style>
+        :root {
+            --pcolor: #FFCC33;
+            --dark1: #191919;
+            --dark2: #141212;
+            --cream: #fffaf5;
+            --border: 1px solid rgba(128, 128, 128, 0.25);
+        }
+
+        .ct-section {
+            font-family: "DM Sans", sans-serif;
+            color: #181818;
+        }
+
+        .ct-section h1,
+        .ct-section h2,
+        .ct-section h3 {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .ct-eyebrow {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 7px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .ct-reveal {
+            opacity: 0;
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .ct-reveal.ct-in {
+            opacity: 1;
+        }
+
+        /* =========== 1. CONTACT INTRO BANNER (diagonal wipe reveal) =========== */
+
+        .ct-intro {
+            position: relative;
+            min-height: 56vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            background: var(--dark1);
+        }
+
+        .ct-intro-bg {
+            position: absolute;
+            inset: 0;
+            background: url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+            transition: clip-path 1.3s cubic-bezier(.65, 0, .35, 1);
+        }
+
+        .ct-intro-bg.ct-in {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .ct-intro-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 13, 13, 0.9) 30%, rgba(15, 13, 13, 0.35) 100%);
+        }
+
+        .ct-intro-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 30px;
+        }
+
+        .ct-intro-content .ct-eyebrow {
+            color: var(--pcolor);
+            border-color: rgba(255, 204, 51, 0.4);
+        }
+
+        .ct-intro-content h1 {
+            font-size: clamp(36px, 4.6vw, 56px);
+            font-weight: 800;
+            line-height: 1.12;
+            margin-bottom: 18px;
+            max-width: 600px;
+        }
+
+        .ct-intro-content h1 span {
+            color: var(--pcolor);
+        }
+
+        .ct-intro-content p {
+            color: #e5e5e5;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        /* =========== 2. REACH US (info cards, staggered rise + tilt hover) =========== */
+
+        .ct-reach {
+            padding: 100px 30px;
+            background: var(--cream);
+        }
+
+        .ct-reach-head {
+            max-width: 600px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .ct-reach-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ct-reach-head p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .ct-reach-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            perspective: 1000px;
+        }
+
+        .ct-reach-card {
+            background: #fff;
+            border: var(--border);
+            border-radius: 18px;
+            padding: 32px 26px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .7s ease, transform .7s ease, box-shadow .3s ease;
+        }
+
+        .ct-reach-card.ct-in {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .ct-reach-card:hover {
+            transform: rotateX(6deg) rotateY(-6deg) translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .ct-reach-card span.material-symbols-outlined {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--pcolor);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+            color: #181818;
+            font-size: 24px;
+        }
+
+        .ct-reach-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .ct-reach-card p {
+            font-size: 13px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .ct-reach-card a {
+            color: #181818;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media(max-width:900px) {
+            .ct-reach-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========== 3. SEND US A MESSAGE (split form + image, slide + fade) =========== */
+
+        .ct-form-sec {
+            padding: 100px 30px;
+            background: var(--dark1);
+            color: white;
+        }
+
+        .ct-form-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .ct-form-img {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity .9s ease, transform .9s ease;
+        }
+
+        .ct-form-img.ct-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ct-form-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ct-form-box {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity .9s ease .15s, transform .9s ease .15s;
+        }
+
+        .ct-form-box.ct-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ct-form-box h2 {
+            font-size: clamp(26px, 3.2vw, 38px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ct-form-box h2 span {
+            color: var(--pcolor);
+        }
+
+        .ct-form-box>p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 440px;
+        }
+
+        .ct-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ct-field {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 14px;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .ct-field::placeholder {
+            color: #888;
+        }
+
+        textarea.ct-field {
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 20px;
+        }
+
+        .ct-form-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pcolor);
+            color: #181818;
+            font-weight: 700;
+            padding: 15px 32px;
+            border-radius: 30px;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            font-family: "DM Sans", sans-serif;
+            transition: transform .3s ease;
+        }
+
+        .ct-form-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        @media(max-width:900px) {
+            .ct-form-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .ct-form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========== 4. FIND OUR KITCHEN (parallax image) =========== */
+
+        .ct-find {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .ct-find-bg {
+            position: absolute;
+            inset: -15% 0;
+            background: url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+        }
+
+        .ct-find-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 13, 13, 0.88) 32%, rgba(15, 13, 13, 0.3) 100%);
+        }
+
+        .ct-find-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 30px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity .9s ease, transform .9s ease;
+        }
+
+        .ct-find-content.ct-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ct-find-content h2 {
+            font-size: clamp(28px, 3.6vw, 40px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            max-width: 520px;
+        }
+
+        .ct-find-content h2 span {
+            color: var(--pcolor);
+        }
+
+        .ct-find-content p {
+            color: #ddd;
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: 26px;
+        }
+
+        .ct-find-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            background: var(--pcolor);
+            color: #181818;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 15px;
+            transition: transform .3s ease;
+        }
+
+        .ct-find-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* =========== 5. OUR OUTLETS (chip pop + count-up) =========== */
+
+        .ct-outlets {
+            padding: 100px 30px;
+            background: var(--cream);
+        }
+
+        .ct-outlets-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ct-outlets-text h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .ct-outlets-text p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 440px;
+            margin-bottom: 30px;
+        }
+
+        .ct-outlets-stat {
+            display: flex;
+            gap: 36px;
+            margin-bottom: 34px;
+        }
+
+        .ct-outlets-num {
+            font-family: "Poppins", sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            color: #181818;
+            display: block;
+        }
+
+        .ct-outlets-num span {
+            color: var(--pcolor);
+        }
+
+        .ct-outlets-stat div p {
+            font-size: 13px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .ct-chip-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .ct-chip {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            font-weight: 600;
+            background: #fff;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: opacity .5s ease, transform .5s ease, background .3s ease, color .3s ease, border-color .3s ease;
+        }
+
+        .ct-chip.ct-in {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .ct-chip:hover {
+            background: var(--pcolor);
+            border-color: var(--pcolor);
+            color: #181818;
+        }
+
+        @media(max-width:900px) {
+            .ct-outlets-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========== 6. QUICK QUESTIONS CTA (pulse + info fade) =========== */
+
+        .ct-cta {
+            position: relative;
+            margin: 0 30px 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--dark2);
+            border-radius: 28px;
+            padding: 70px 40px;
+            color: white;
+            overflow: hidden;
+        }
+
+        .ct-cta::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 204, 51, 0.16), transparent 70%);
+            top: -220px;
+            right: -150px;
+        }
+
+        .ct-cta-inner {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .ct-cta-text {
+            max-width: 520px;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .ct-cta-text.ct-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ct-cta-text h2 {
+            font-size: clamp(26px, 3.2vw, 36px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ct-cta-text p {
+            color: #bbb;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .ct-cta-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            opacity: 0;
+            transition: opacity .7s ease .2s;
+        }
+
+        .ct-cta-actions.ct-in {
+            opacity: 1;
+        }
+
+        .ct-cta-btn-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ct-cta-btn-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 40px;
+            border: 2px solid var(--pcolor);
+            opacity: 0.7;
+            animation: ct-pulse 2s ease-out infinite;
+        }
+
+        @keyframes ct-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.35);
+                opacity: 0;
+            }
+        }
+
+        .ct-cta-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--pcolor);
+            color: #181818;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        .ct-cta-call {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .ct-cta-call span.material-symbols-outlined {
+            color: var(--pcolor);
+            font-size: 22px;
+        }
+
+        @media(max-width:600px) {
+
+            .ct-reach,
+            .ct-form-sec,
+            .ct-outlets {
+                padding: 70px 20px;
+            }
+
+            .ct-find-content {
+                padding: 60px 20px;
+            }
+
+            .ct-cta {
+                margin: 0 16px 70px;
+                padding: 50px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background:var(--cream);">
+
+    <!-- ============ 1. CONTACT INTRO BANNER ============ -->
+    <section class="ct-section ct-intro">
+        <div class="ct-intro-bg" id="ctIntroBg"></div>
+        <div class="ct-intro-overlay"></div>
+        <div class="ct-intro-content">
+            <span class="ct-eyebrow">Get In Touch</span>
+            <h1>Questions, orders <span>or just say hi.</span></h1>
+            <p>Whether it's a bulk order, a franchise query, or feedback on last night's delivery — we read every
+                message ourselves.</p>
+        </div>
+    </section>
+
+    <!-- ============ 2. REACH US ============ -->
+    <section class="ct-section ct-reach">
+        <div class="ct-reach-head">
+            <h2>Three ways to reach us</h2>
+            <p>Pick whichever's easiest — we're usually quick to reply on all three.</p>
+        </div>
+        <div class="ct-reach-grid">
+            <div class="ct-reach-card ct-reveal">
+                <span class="material-symbols-outlined">call</span>
+                <h4>Call the kitchen</h4>
+                <p>Speak to our team directly for orders or urgent queries.</p>
+                <a href="tel:+911234509876">+91 12345 09876</a>
+            </div>
+            <div class="ct-reach-card ct-reveal">
+                <span class="material-symbols-outlined">mail</span>
+                <h4>Email us</h4>
+                <p>For catering enquiries, feedback or partnership requests.</p>
+                <a href="mailto:hello@stackly.com">hello@stackly.com</a>
+            </div>
+            <div class="ct-reach-card ct-reveal">
+                <span class="material-symbols-outlined">location_on</span>
+                <h4>Visit in person</h4>
+                <p>Drop by our flagship kitchen for dine-in or a quick chat.</p>
+                <a href="#">14 Grill Street, Chennai</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 3. SEND US A MESSAGE ============ -->
+    <section class="ct-section ct-form-sec">
+        <div class="ct-form-inner">
+            <div class="ct-form-img ct-reveal">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=85"
+                    alt="Restaurant staff taking a phone order">
+            </div>
+            <div class="ct-form-box ct-reveal">
+                <h2>Send us a <span>message</span></h2>
+                <p>Fill this in and someone from the team will get back to you within a day.</p>
+                <div class="ct-form-row">
+                    <input type="text" class="ct-field" placeholder="First name">
+                    <input type="text" class="ct-field" placeholder="Last name">
+                </div>
+                <div class="ct-form-row">
+                    <input type="email" class="ct-field" placeholder="Email address">
+                    <input type="tel" class="ct-field" placeholder="Phone number">
+                </div>
+                <textarea class="ct-field" placeholder="Tell us what you need..."></textarea>
+                <button type="button" class="ct-form-btn">Send Message<span
+                        class="material-symbols-outlined">send</span></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 4. FIND OUR KITCHEN ============ -->
+    <section class="ct-section ct-find">
+        <div class="ct-find-bg" id="ctFindBg"></div>
+        <div class="ct-find-overlay"></div>
+        <div class="ct-find-content ct-reveal">
+            <h2>Come find us <span>in person.</span></h2>
+            <p>Our flagship kitchen is open through the week for dine-in and takeaway — walk-ins are always welcome.</p>
+            <a href="#" class="ct-find-btn">Get Directions<span
+                    class="material-symbols-outlined">arrow_right_alt</span></a>
+        </div>
+    </section>
+
+    <!-- ============ 5. OUR OUTLETS ============ -->
+    <section class="ct-section ct-outlets">
+        <div class="ct-outlets-inner">
+            <div class="ct-outlets-text">
+                <h2>Our outlets near you</h2>
+                <p>Already open in these neighbourhoods — pick the one closest to you.</p>
+                <div class="ct-outlets-stat">
+                    <div><span class="ct-outlets-num" data-target="24">0</span>
+                        <p>Outlets open</p>
+                    </div>
+                    <div><span class="ct-outlets-num" data-target="7">0</span>
+                        <p>Days a week</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-chip-cloud">
+                <span class="ct-chip">Anna Nagar</span>
+                <span class="ct-chip">T. Nagar</span>
+                <span class="ct-chip">Velachery</span>
+                <span class="ct-chip">Adyar</span>
+                <span class="ct-chip">Porur</span>
+                <span class="ct-chip">OMR</span>
+                <span class="ct-chip">Nungambakkam</span>
+                <span class="ct-chip">Tambaram</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 6. QUICK QUESTIONS CTA ============ -->
+    <section class="ct-section ct-cta">
+        <div class="ct-cta-inner">
+            <div class="ct-cta-text ct-reveal">
+                <h2>Still have a question?</h2>
+                <p>Check our most common questions, or just pick up the phone and ask us directly.</p>
+            </div>
+            <div class="ct-cta-actions ct-reveal">
+                <div class="ct-cta-btn-wrap">
+                    <a href="#" class="ct-cta-btn"><span class="material-symbols-outlined">quiz</span>View FAQs</a>
+                </div>
+                <a href="tel:+911234509876" class="ct-cta-call">
+                    <span class="material-symbols-outlined">call</span>+91 12345 09876
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // scroll-reveal
+        const ctRevealEls = document.querySelectorAll('.ct-reveal, .ct-reach-card, .ct-find-content, .ct-cta-text, .ct-cta-actions, .ct-chip, .ct-form-img, .ct-form-box');
+        const ctObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('ct-in');
+                    ctObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        ctRevealEls.forEach(el => ctObserver.observe(el));
+
+        // trigger the intro diagonal wipe on load
+        window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('ctIntroBg').classList.add('ct-in'), 150);
+        });
+
+        // staggered delay for reach cards and chips
+        document.querySelectorAll('.ct-reach-grid, .ct-chip-cloud').forEach(group => {
+            [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
+        });
+
+        // simple JS parallax on the "find us" background
+        const ctFindSection = document.querySelector('.ct-find');
+        const ctFindBg = document.getElementById('ctFindBg');
+        window.addEventListener('scroll', () => {
+            const rect = ctFindSection.getBoundingClientRect();
+            const offset = rect.top * 0.15;
+            ctFindBg.style.transform = `translateY(${offset}px)`;
+        });
+
+        // count-up numbers
+        const ctStatEls = document.querySelectorAll('.ct-outlets-num');
+        const ctStatObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    let current = 0;
+                    const step = Math.max(target / 50, 0.5);
+                    const tick = () => {
+                        current += step;
+                        if (current >= target) {
+                            el.textContent = target + "+";
+                        } else {
+                            el.textContent = Math.floor(current) + "+";
+                            requestAnimationFrame(tick);
+                        }
+                    };
+                    tick();
+                    ctStatObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        ctStatEls.forEach(el => ctStatObserver.observe(el));
+    </script>
+
+</body>
+
+</html>

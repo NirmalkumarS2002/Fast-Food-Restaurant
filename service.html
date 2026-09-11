@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly - Services Page Sections</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+
+<style>
+    /* =========================================================
+       NOTE TO DEV: These are ONLY the 6 content sections for
+       the Services page. Navbar and footer are NOT included —
+       paste this block between your existing <header> and
+       <footer> tags. Same theme tokens as the rest of the site.
+    ========================================================= */
+
+    :root{
+        --pcolor:#FFCC33;
+        --dark1:#191919;
+        --dark2:#141212;
+        --cream:#fffaf5;
+        --border:1px solid rgba(128,128,128,0.25);
+    }
+
+    .sv-section{ font-family:"DM Sans", sans-serif; color:#181818; }
+    .sv-section h1, .sv-section h2, .sv-section h3{ font-family:"Poppins", sans-serif; }
+
+    .sv-eyebrow{
+        display:inline-block;
+        margin-bottom:14px;
+        padding:7px 16px;
+        border:1px solid rgba(255,255,255,0.35);
+        border-radius:30px;
+        font-size:13px;
+        letter-spacing:0.5px;
+    }
+
+    .sv-reveal{ opacity:0; transition: opacity 0.9s ease, transform 0.9s ease; }
+    .sv-reveal.sv-in{ opacity:1; }
+
+    /* =========== 1. SERVICES INTRO BANNER (diagonal wipe reveal) =========== */
+
+    .sv-intro{
+        position:relative;
+        min-height:56vh;
+        display:flex;
+        align-items:center;
+        overflow:hidden;
+        color:white;
+        background:var(--dark1);
+    }
+    .sv-intro-bg{
+        position:absolute; inset:0;
+        background:url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85");
+        background-size:cover;
+        background-position:center;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        transition: clip-path 1.3s cubic-bezier(.65,0,.35,1);
+    }
+    .sv-intro-bg.sv-in{ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+    .sv-intro-overlay{
+        position:absolute; inset:0;
+        background:linear-gradient(90deg, rgba(15,13,13,0.9) 30%, rgba(15,13,13,0.35) 100%);
+    }
+
+    .sv-intro-content{
+        position:relative;
+        max-width:1200px;
+        margin:0 auto;
+        padding:100px 30px;
+    }
+    .sv-intro-content .sv-eyebrow{ color:var(--pcolor); border-color:rgba(255,204,51,0.4); }
+    .sv-intro-content h1{
+        font-size:clamp(36px,4.6vw,56px);
+        font-weight:800;
+        line-height:1.12;
+        margin-bottom:18px;
+        max-width:620px;
+    }
+    .sv-intro-content h1 span{ color:var(--pcolor); }
+    .sv-intro-content p{ color:#e5e5e5; font-size:16px; line-height:1.7; max-width:500px; }
+
+    /* =========== 2. WHAT WE OFFER (alternating slide + 3D tilt hover) =========== */
+
+    .sv-offer{
+        padding:100px 30px;
+        background:var(--cream);
+    }
+    .sv-offer-head{ max-width:600px; margin:0 auto 55px; text-align:center; }
+    .sv-offer-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:14px; }
+    .sv-offer-head p{ color:#666; font-size:15px; line-height:1.7; }
+
+    .sv-offer-grid{
+        max-width:1200px;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:24px;
+        perspective:1000px;
+    }
+
+    .sv-offer-card{
+        background:#fff;
+        border:var(--border);
+        border-radius:18px;
+        overflow:hidden;
+        opacity:0;
+        transition: opacity .7s ease, transform .7s ease, box-shadow .3s ease;
+    }
+    .sv-offer-card:nth-child(odd){ transform:translateY(40px); }
+    .sv-offer-card:nth-child(even){ transform:translateY(-40px); }
+    .sv-offer-card.sv-in{ transform:translateY(0); opacity:1; }
+    .sv-offer-card:hover{
+        transform:rotateX(6deg) rotateY(-6deg) translateY(-6px);
+        box-shadow:0 20px 35px rgba(0,0,0,0.18);
+    }
+
+    .sv-offer-card img{ width:100%; height:160px; object-fit:cover; display:block; }
+    .sv-offer-card-body{ padding:20px; }
+    .sv-offer-card-body span.material-symbols-outlined{
+        width:40px; height:40px;
+        border-radius:50%;
+        background:var(--pcolor);
+        display:grid; place-items:center;
+        margin-bottom:14px;
+        color:#181818;
+    }
+    .sv-offer-card-body h4{ font-size:16px; margin-bottom:8px; }
+    .sv-offer-card-body p{ font-size:13px; color:#777; line-height:1.6; }
+
+    @media(max-width:900px){ .sv-offer-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:520px){ .sv-offer-grid{ grid-template-columns:1fr; } }
+
+    /* =========== 3. HOW DELIVERY WORKS (step line draw) =========== */
+
+    .sv-steps{
+        padding:100px 30px;
+        background:var(--dark1);
+        color:white;
+    }
+    .sv-steps-head{ max-width:600px; margin:0 auto 65px; text-align:center; }
+    .sv-steps-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:14px; }
+    .sv-steps-head h2 span{ color:var(--pcolor); }
+    .sv-steps-head p{ color:#aaa; font-size:15px; line-height:1.7; }
+
+    .sv-steps-track{
+        max-width:1100px;
+        margin:0 auto;
+        position:relative;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        gap:24px;
+    }
+    .sv-steps-track::before{
+        content:"";
+        position:absolute;
+        top:27px; left:0; right:0;
+        height:2px;
+        background:rgba(255,255,255,0.12);
+    }
+    .sv-steps-track::after{
+        content:"";
+        position:absolute;
+        top:27px; left:0;
+        height:2px;
+        width:0%;
+        background:var(--pcolor);
+        transition: width 1.6s ease;
+    }
+    .sv-steps-track.sv-in::after{ width:100%; }
+
+    .sv-step{
+        position:relative;
+        text-align:center;
+        opacity:0;
+        transform:translateY(16px);
+        transition: opacity .6s ease, transform .6s ease;
+    }
+    .sv-step.sv-in{ opacity:1; transform:translateY(0); }
+
+    .sv-step-num{
+        width:56px; height:56px;
+        margin:0 auto 18px;
+        border-radius:50%;
+        background:var(--dark2);
+        border:2px solid var(--pcolor);
+        color:var(--pcolor);
+        font-family:"Poppins",sans-serif;
+        font-weight:800;
+        font-size:18px;
+        display:grid; place-items:center;
+        position:relative;
+        z-index:2;
+    }
+    .sv-step h4{ font-size:15px; margin-bottom:8px; }
+    .sv-step p{ font-size:13px; color:#999; line-height:1.6; max-width:220px; margin:0 auto; }
+
+    @media(max-width:900px){
+        .sv-steps-track{ grid-template-columns:1fr; gap:40px; }
+        .sv-steps-track::before, .sv-steps-track::after{ display:none; }
+    }
+
+    /* =========== 4. CATERING & EVENTS (parallax image) =========== */
+
+    .sv-catering{
+        position:relative;
+        min-height:480px;
+        display:flex;
+        align-items:center;
+        overflow:hidden;
+        color:white;
+    }
+    .sv-catering-bg{
+        position:absolute;
+        inset:-15% 0;
+        background:url("https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1800&q=85");
+        background-size:cover;
+        background-position:center;
+        will-change:transform;
+    }
+    .sv-catering-overlay{
+        position:absolute; inset:0;
+        background:linear-gradient(90deg, rgba(15,13,13,0.88) 32%, rgba(15,13,13,0.3) 100%);
+    }
+    .sv-catering-content{
+        position:relative;
+        max-width:1200px;
+        margin:0 auto;
+        padding:80px 30px;
+        opacity:0;
+        transform:translateX(-30px);
+        transition: opacity .9s ease, transform .9s ease;
+    }
+    .sv-catering-content.sv-in{ opacity:1; transform:translateX(0); }
+
+    .sv-catering-content h2{ font-size:clamp(28px,3.6vw,40px); font-weight:800; margin-bottom:16px; max-width:520px; }
+    .sv-catering-content h2 span{ color:var(--pcolor); }
+    .sv-catering-content p{ color:#ddd; font-size:15px; line-height:1.7; max-width:480px; margin-bottom:26px; }
+
+    .sv-catering-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        text-decoration:none;
+        background:var(--pcolor);
+        color:#181818;
+        font-weight:700;
+        padding:15px 30px;
+        border-radius:30px;
+        font-size:15px;
+        transition: transform .3s ease;
+    }
+    .sv-catering-btn:hover{ transform:translateY(-4px); }
+
+    /* =========== 5. AREAS WE SERVE (staggered chip pop + count-up) =========== */
+
+    .sv-areas{
+        padding:100px 30px;
+        background:var(--cream);
+    }
+    .sv-areas-inner{
+        max-width:1200px;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:60px;
+        align-items:center;
+    }
+
+    .sv-areas-text h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:16px; }
+    .sv-areas-text p{ color:#666; font-size:15px; line-height:1.75; max-width:440px; margin-bottom:30px; }
+
+    .sv-areas-stat{ display:flex; gap:36px; margin-bottom:34px; }
+    .sv-areas-num{
+        font-family:"Poppins",sans-serif;
+        font-size:40px;
+        font-weight:800;
+        color:#181818;
+        display:block;
+    }
+    .sv-areas-num span{ color:var(--pcolor); }
+    .sv-areas-stat div p{ font-size:13px; color:#777; margin-top:4px; }
+
+    .sv-chip-cloud{ display:flex; flex-wrap:wrap; gap:12px; }
+    .sv-chip{
+        padding:10px 20px;
+        border-radius:30px;
+        border:1px solid rgba(0,0,0,0.15);
+        font-size:14px;
+        font-weight:600;
+        background:#fff;
+        opacity:0;
+        transform:scale(0.7);
+        transition: opacity .5s ease, transform .5s ease, background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .sv-chip.sv-in{ opacity:1; transform:scale(1); }
+    .sv-chip:hover{ background:var(--pcolor); border-color:var(--pcolor); color:#181818; }
+
+    @media(max-width:900px){ .sv-areas-inner{ grid-template-columns:1fr; } }
+
+    /* =========== 6. READY TO BOOK CTA (pulse + info fade) =========== */
+
+    .sv-cta{
+        position:relative;
+        margin:0 30px 100px;
+        max-width:1200px;
+        margin-left:auto; margin-right:auto;
+        background:var(--dark2);
+        border-radius:28px;
+        padding:70px 40px;
+        color:white;
+        overflow:hidden;
+    }
+    .sv-cta::after{
+        content:"";
+        position:absolute;
+        width:500px; height:500px;
+        background:radial-gradient(circle, rgba(255,204,51,0.16), transparent 70%);
+        top:-220px; right:-150px;
+    }
+
+    .sv-cta-inner{
+        position:relative;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:30px;
+    }
+
+    .sv-cta-text{ max-width:520px; opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+    .sv-cta-text.sv-in{ opacity:1; transform:translateY(0); }
+    .sv-cta-text h2{ font-size:clamp(26px,3.2vw,36px); font-weight:800; margin-bottom:14px; }
+    .sv-cta-text p{ color:#bbb; font-size:15px; line-height:1.7; }
+
+    .sv-cta-actions{ display:flex; align-items:center; gap:20px; opacity:0; transition:opacity .7s ease .2s; }
+    .sv-cta-actions.sv-in{ opacity:1; }
+
+    .sv-cta-btn-wrap{ position:relative; display:inline-block; }
+    .sv-cta-btn-wrap::before{
+        content:"";
+        position:absolute; inset:-8px;
+        border-radius:40px;
+        border:2px solid var(--pcolor);
+        opacity:0.7;
+        animation: sv-pulse 2s ease-out infinite;
+    }
+    @keyframes sv-pulse{
+        0%{ transform:scale(1); opacity:0.6; }
+        100%{ transform:scale(1.35); opacity:0; }
+    }
+    .sv-cta-btn{
+        position:relative;
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        background:var(--pcolor);
+        color:#181818;
+        font-weight:700;
+        font-size:15px;
+        padding:16px 32px;
+        border-radius:30px;
+        text-decoration:none;
+    }
+    .sv-cta-call{
+        display:flex; align-items:center; gap:10px;
+        color:white; text-decoration:none; font-size:15px; font-weight:600;
+    }
+    .sv-cta-call span.material-symbols-outlined{ color:var(--pcolor); font-size:22px; }
+
+    @media(max-width:600px){
+        .sv-offer, .sv-steps, .sv-areas{ padding:70px 20px; }
+        .sv-catering-content{ padding:60px 20px; }
+        .sv-cta{ margin:0 16px 70px; padding:50px 24px; }
+    }
+</style>
+</head>
+<body style="background:var(--cream);">
+
+<!-- ============ 1. SERVICES INTRO BANNER ============ -->
+<section class="sv-section sv-intro">
+    <div class="sv-intro-bg" id="svIntroBg"></div>
+    <div class="sv-intro-overlay"></div>
+    <div class="sv-intro-content">
+        <span class="sv-eyebrow">Our Services</span>
+        <h1>More than food — <span>a complete service.</span></h1>
+        <p>Dine-in, takeaway, delivery or catering — pick the way you want Stackly, and we'll handle the rest.</p>
+    </div>
+</section>
+
+<!-- ============ 2. WHAT WE OFFER ============ -->
+<section class="sv-section sv-offer">
+    <div class="sv-offer-head">
+        <h2>What we offer</h2>
+        <p>Four ways to enjoy Stackly, each run with the same kitchen standard.</p>
+    </div>
+    <div class="sv-offer-grid">
+        <div class="sv-offer-card sv-reveal">
+            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=500&q=80" alt="Dine-in seating">
+            <div class="sv-offer-card-body">
+                <span class="material-symbols-outlined">restaurant</span>
+                <h4>Dine-in</h4>
+                <p>Walk in and eat fresh off the grill in our seating area.</p>
+            </div>
+        </div>
+        <div class="sv-offer-card sv-reveal">
+            <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80" alt="Takeaway packaging">
+            <div class="sv-offer-card-body">
+                <span class="material-symbols-outlined">takeout_dining</span>
+                <h4>Takeaway</h4>
+                <p>Order ahead and skip the wait — packed and ready on arrival.</p>
+            </div>
+        </div>
+        <div class="sv-offer-card sv-reveal">
+            <img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=500&q=80" alt="Delivery rider">
+            <div class="sv-offer-card-body">
+                <span class="material-symbols-outlined">delivery_dining</span>
+                <h4>Delivery</h4>
+                <p>Hot food tracked live from our kitchen straight to your door.</p>
+            </div>
+        </div>
+        <div class="sv-offer-card sv-reveal">
+            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=500&q=80" alt="Catering spread">
+            <div class="sv-offer-card-body">
+                <span class="material-symbols-outlined">celebration</span>
+                <h4>Catering</h4>
+                <p>Bulk orders for parties and events, planned around your headcount.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 3. HOW DELIVERY WORKS ============ -->
+<section class="sv-section sv-steps">
+    <div class="sv-steps-head">
+        <h2>How our <span>delivery</span> works</h2>
+        <p>From the moment you order to the moment it's at your door.</p>
+    </div>
+    <div class="sv-steps-track sv-reveal">
+        <div class="sv-step">
+            <div class="sv-step-num">01</div>
+            <h4>Place your order</h4>
+            <p>Choose your items and check out online or on call.</p>
+        </div>
+        <div class="sv-step">
+            <div class="sv-step-num">02</div>
+            <h4>Kitchen starts cooking</h4>
+            <p>Your order goes straight to the grill, nothing pre-made.</p>
+        </div>
+        <div class="sv-step">
+            <div class="sv-step-num">03</div>
+            <h4>Packed and dispatched</h4>
+            <p>Sealed hot and handed to a rider within minutes.</p>
+        </div>
+        <div class="sv-step">
+            <div class="sv-step-num">04</div>
+            <h4>Delivered to you</h4>
+            <p>Tracked live until it reaches your door, hot and fresh.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 4. CATERING & EVENTS ============ -->
+<section class="sv-section sv-catering">
+    <div class="sv-catering-bg" id="svCateringBg"></div>
+    <div class="sv-catering-overlay"></div>
+    <div class="sv-catering-content sv-reveal">
+        <h2>Planning an event? <span>Let us cater it.</span></h2>
+        <p>From office lunches to birthday parties, we plan portions around your guest count and deliver everything set up and ready to serve.</p>
+        <a href="#" class="sv-catering-btn">Enquire for Catering<span class="material-symbols-outlined">arrow_right_alt</span></a>
+    </div>
+</section>
+
+<!-- ============ 5. AREAS WE SERVE ============ -->
+<section class="sv-section sv-areas">
+    <div class="sv-areas-inner">
+        <div class="sv-areas-text">
+            <h2>Areas we currently serve</h2>
+            <p>Growing city by city — if we're not in your area yet, we probably will be soon.</p>
+            <div class="sv-areas-stat">
+                <div><span class="sv-areas-num" data-target="18">0</span><p>Cities covered</p></div>
+                <div><span class="sv-areas-num" data-target="120">0</span><p>Delivery zones</p></div>
+            </div>
+        </div>
+        <div class="sv-chip-cloud">
+            <span class="sv-chip">Chennai</span>
+            <span class="sv-chip">Bengaluru</span>
+            <span class="sv-chip">Coimbatore</span>
+            <span class="sv-chip">Madurai</span>
+            <span class="sv-chip">Hyderabad</span>
+            <span class="sv-chip">Kochi</span>
+            <span class="sv-chip">Trichy</span>
+            <span class="sv-chip">Pondicherry</span>
+            <span class="sv-chip">Salem</span>
+            <span class="sv-chip">Vellore</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 6. READY TO BOOK CTA ============ -->
+<section class="sv-section sv-cta">
+    <div class="sv-cta-inner">
+        <div class="sv-cta-text sv-reveal">
+            <h2>Ready when you are.</h2>
+            <p>Book a table, place an order, or ask us about catering for your next event.</p>
+        </div>
+        <div class="sv-cta-actions sv-reveal">
+            <div class="sv-cta-btn-wrap">
+                <a href="#" class="sv-cta-btn"><span class="material-symbols-outlined">event_available</span>Book Now</a>
+            </div>
+            <a href="tel:+911234509876" class="sv-cta-call">
+                <span class="material-symbols-outlined">call</span>+91 12345 09876
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // scroll-reveal
+    const svRevealEls = document.querySelectorAll('.sv-reveal, .sv-offer-card, .sv-steps-track, .sv-catering-content, .sv-cta-text, .sv-cta-actions, .sv-chip');
+    const svObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('sv-in');
+                svObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    svRevealEls.forEach(el => svObserver.observe(el));
+
+    // trigger the intro diagonal wipe on load
+    window.addEventListener('load', () => {
+        setTimeout(() => document.getElementById('svIntroBg').classList.add('sv-in'), 150);
+    });
+
+    // staggered delay for offer cards, steps, chips
+    document.querySelectorAll('.sv-offer-grid, .sv-steps-track, .sv-chip-cloud').forEach(group => {
+        [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
+    });
+
+    // reveal individual steps once track is in view
+    const svStepObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting){
+                entry.target.querySelectorAll('.sv-step').forEach(s => s.classList.add('sv-in'));
+                svStepObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.sv-steps-track').forEach(el => svStepObserver.observe(el));
+
+    // simple JS parallax on the catering background
+    const svCateringSection = document.querySelector('.sv-catering');
+    const svCateringBg = document.getElementById('svCateringBg');
+    window.addEventListener('scroll', () => {
+        const rect = svCateringSection.getBoundingClientRect();
+        const offset = rect.top * 0.15;
+        svCateringBg.style.transform = `translateY(${offset}px)`;
+    });
+
+    // count-up numbers
+    const svStatEls = document.querySelectorAll('.sv-areas-num');
+    const svStatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.dataset.target);
+                let current = 0;
+                const step = Math.max(target / 50, 0.5);
+                const tick = () => {
+                    current += step;
+                    if (current >= target) {
+                        el.textContent = target + "+";
+                    } else {
+                        el.textContent = Math.floor(current) + "+";
+                        requestAnimationFrame(tick);
+                    }
+                };
+                tick();
+                svStatObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    svStatEls.forEach(el => svStatObserver.observe(el));
+</script>
+
+</body>
+</html>

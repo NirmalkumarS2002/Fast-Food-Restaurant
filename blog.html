@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly - Blog Page Sections</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+
+<style>
+    /* =========================================================
+       NOTE TO DEV: These are ONLY the 6 content sections for
+       the Blog page. Navbar and footer are NOT included —
+       paste this block between your existing <header> and
+       <footer> tags. Same theme tokens as the rest of the site.
+    ========================================================= */
+
+    :root{
+        --pcolor:#FFCC33;
+        --dark1:#191919;
+        --dark2:#141212;
+        --cream:#fffaf5;
+        --border:1px solid rgba(128,128,128,0.25);
+    }
+
+    .bl-section{ font-family:"DM Sans", sans-serif; color:#181818; }
+    .bl-section h1, .bl-section h2, .bl-section h3{ font-family:"Poppins", sans-serif; }
+
+    .bl-eyebrow{
+        display:inline-block;
+        margin-bottom:14px;
+        padding:7px 16px;
+        border:1px solid rgba(255,255,255,0.35);
+        border-radius:30px;
+        font-size:13px;
+        letter-spacing:0.5px;
+    }
+
+    .bl-reveal{ opacity:0; transition: opacity 0.9s ease, transform 0.9s ease; }
+    .bl-reveal.bl-in{ opacity:1; }
+
+    /* =========== 1. BLOG INTRO BANNER (diagonal wipe reveal) =========== */
+
+    .bl-intro{
+        position:relative;
+        min-height:56vh;
+        display:flex;
+        align-items:center;
+        overflow:hidden;
+        color:white;
+        background:var(--dark1);
+    }
+    .bl-intro-bg{
+        position:absolute; inset:0;
+        background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=85");
+        background-size:cover;
+        background-position:center;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        transition: clip-path 1.3s cubic-bezier(.65,0,.35,1);
+    }
+    .bl-intro-bg.bl-in{ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+    .bl-intro-overlay{
+        position:absolute; inset:0;
+        background:linear-gradient(90deg, rgba(15,13,13,0.9) 30%, rgba(15,13,13,0.35) 100%);
+    }
+
+    .bl-intro-content{
+        position:relative;
+        max-width:1200px;
+        margin:0 auto;
+        padding:100px 30px;
+    }
+    .bl-intro-content .bl-eyebrow{ color:var(--pcolor); border-color:rgba(255,204,51,0.4); }
+    .bl-intro-content h1{
+        font-size:clamp(36px,4.6vw,56px);
+        font-weight:800;
+        line-height:1.12;
+        margin-bottom:18px;
+        max-width:640px;
+    }
+    .bl-intro-content h1 span{ color:var(--pcolor); }
+    .bl-intro-content p{ color:#e5e5e5; font-size:16px; line-height:1.7; max-width:500px; }
+
+    /* =========== 2. FEATURED STORY (split layout, slide + fade) =========== */
+
+    .bl-featured{
+        padding:100px 30px;
+        background:var(--cream);
+    }
+    .bl-featured-inner{
+        max-width:1200px;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:1.1fr 1fr;
+        gap:50px;
+        align-items:center;
+    }
+    .bl-featured-img{
+        position:relative;
+        border-radius:20px;
+        overflow:hidden;
+        aspect-ratio:4/3;
+        opacity:0;
+        transform:translateX(-40px);
+        transition: opacity .9s ease, transform .9s ease;
+    }
+    .bl-featured-img.bl-in{ opacity:1; transform:translateX(0); }
+    .bl-featured-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .bl-featured-text{
+        opacity:0;
+        transform:translateX(40px);
+        transition: opacity .9s ease .15s, transform .9s ease .15s;
+    }
+    .bl-featured-text.bl-in{ opacity:1; transform:translateX(0); }
+    .bl-featured-tag{
+        display:inline-block;
+        padding:6px 14px;
+        border-radius:20px;
+        background:rgba(255,204,51,0.18);
+        color:#8a6d00;
+        font-size:12px;
+        font-weight:700;
+        margin-bottom:16px;
+    }
+    .bl-featured-text h2{ font-size:clamp(26px,3.2vw,38px); font-weight:800; line-height:1.2; margin-bottom:16px; }
+    .bl-featured-text p{ color:#666; font-size:15px; line-height:1.75; margin-bottom:22px; max-width:480px; }
+    .bl-featured-meta{ display:flex; gap:18px; font-size:13px; color:#888; margin-bottom:26px; }
+    .bl-featured-link{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        text-decoration:none;
+        color:#181818;
+        font-weight:700;
+        font-size:15px;
+        border-bottom:2px solid var(--pcolor);
+        padding-bottom:4px;
+    }
+
+    @media(max-width:900px){ .bl-featured-inner{ grid-template-columns:1fr; } }
+
+    /* =========== 3. LATEST ARTICLES (staggered grid + tilt hover) =========== */
+
+    .bl-latest{
+        padding:100px 30px;
+        background:var(--dark1);
+        color:white;
+    }
+    .bl-latest-head{
+        max-width:1200px;
+        margin:0 auto 50px;
+        display:flex;
+        justify-content:space-between;
+        align-items:flex-end;
+        gap:20px;
+        flex-wrap:wrap;
+    }
+    .bl-latest-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; }
+    .bl-latest-head h2 span{ color:var(--pcolor); }
+    .bl-latest-head p{ color:#aaa; font-size:14px; max-width:340px; }
+
+    .bl-latest-grid{
+        max-width:1200px;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:26px;
+        perspective:1000px;
+    }
+    .bl-post-card{
+        background:var(--dark2);
+        border:1px solid rgba(255,255,255,0.08);
+        border-radius:18px;
+        overflow:hidden;
+        opacity:0;
+        transform:translateY(36px);
+        transition: opacity .7s ease, transform .7s ease, box-shadow .3s ease;
+    }
+    .bl-post-card.bl-in{ opacity:1; transform:translateY(0); }
+    .bl-post-card:hover{
+        transform:rotateX(4deg) rotateY(-4deg) translateY(-6px);
+        box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+    .bl-post-card img{ width:100%; height:180px; object-fit:cover; display:block; }
+    .bl-post-body{ padding:22px; }
+    .bl-post-date{ font-size:12px; color:var(--pcolor); font-weight:600; margin-bottom:10px; }
+    .bl-post-body h4{ font-size:16px; margin-bottom:10px; line-height:1.4; }
+    .bl-post-body p{ font-size:13px; color:#999; line-height:1.6; }
+
+    @media(max-width:900px){ .bl-latest-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:600px){ .bl-latest-grid{ grid-template-columns:1fr; } }
+
+    /* =========== 4. FROM THE KITCHEN (parallax image) =========== */
+
+    .bl-kitchen{
+        position:relative;
+        min-height:480px;
+        display:flex;
+        align-items:center;
+        overflow:hidden;
+        color:white;
+    }
+    .bl-kitchen-bg{
+        position:absolute;
+        inset:-15% 0;
+        background:url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1800&q=85");
+        background-size:cover;
+        background-position:center;
+        will-change:transform;
+    }
+    .bl-kitchen-overlay{
+        position:absolute; inset:0;
+        background:linear-gradient(90deg, rgba(15,13,13,0.88) 32%, rgba(15,13,13,0.3) 100%);
+    }
+    .bl-kitchen-content{
+        position:relative;
+        max-width:1200px;
+        margin:0 auto;
+        padding:80px 30px;
+        opacity:0;
+        transform:translateX(-30px);
+        transition: opacity .9s ease, transform .9s ease;
+    }
+    .bl-kitchen-content.bl-in{ opacity:1; transform:translateX(0); }
+
+    .bl-kitchen-content h2{ font-size:clamp(28px,3.6vw,40px); font-weight:800; margin-bottom:16px; max-width:520px; }
+    .bl-kitchen-content h2 span{ color:var(--pcolor); }
+    .bl-kitchen-content p{ color:#ddd; font-size:15px; line-height:1.7; max-width:480px; margin-bottom:26px; }
+
+    .bl-kitchen-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        text-decoration:none;
+        background:var(--pcolor);
+        color:#181818;
+        font-weight:700;
+        padding:15px 30px;
+        border-radius:30px;
+        font-size:15px;
+        transition: transform .3s ease;
+    }
+    .bl-kitchen-btn:hover{ transform:translateY(-4px); }
+
+    /* =========== 5. BROWSE BY TOPIC (chip pop + count-up) =========== */
+
+    .bl-topics{
+        padding:100px 30px;
+        background:var(--cream);
+    }
+    .bl-topics-inner{
+        max-width:1200px;
+        margin:0 auto;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:60px;
+        align-items:center;
+    }
+
+    .bl-topics-text h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:16px; }
+    .bl-topics-text p{ color:#666; font-size:15px; line-height:1.75; max-width:440px; margin-bottom:30px; }
+
+    .bl-topics-stat{ display:flex; gap:36px; margin-bottom:34px; }
+    .bl-topics-num{
+        font-family:"Poppins",sans-serif;
+        font-size:40px;
+        font-weight:800;
+        color:#181818;
+        display:block;
+    }
+    .bl-topics-num span{ color:var(--pcolor); }
+    .bl-topics-stat div p{ font-size:13px; color:#777; margin-top:4px; }
+
+    .bl-chip-cloud{ display:flex; flex-wrap:wrap; gap:12px; }
+    .bl-chip{
+        padding:10px 20px;
+        border-radius:30px;
+        border:1px solid rgba(0,0,0,0.15);
+        font-size:14px;
+        font-weight:600;
+        background:#fff;
+        opacity:0;
+        transform:scale(0.7);
+        transition: opacity .5s ease, transform .5s ease, background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .bl-chip.bl-in{ opacity:1; transform:scale(1); }
+    .bl-chip:hover{ background:var(--pcolor); border-color:var(--pcolor); color:#181818; }
+
+    @media(max-width:900px){ .bl-topics-inner{ grid-template-columns:1fr; } }
+
+    /* =========== 6. NEWSLETTER SIGNUP (pulse + fade) =========== */
+
+    .bl-news{
+        position:relative;
+        margin:0 30px 100px;
+        max-width:1200px;
+        margin-left:auto; margin-right:auto;
+        background:var(--dark2);
+        border-radius:28px;
+        padding:70px 40px;
+        color:white;
+        overflow:hidden;
+    }
+    .bl-news::after{
+        content:"";
+        position:absolute;
+        width:500px; height:500px;
+        background:radial-gradient(circle, rgba(255,204,51,0.16), transparent 70%);
+        top:-220px; right:-150px;
+    }
+
+    .bl-news-inner{
+        position:relative;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:30px;
+    }
+
+    .bl-news-text{ max-width:520px; opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+    .bl-news-text.bl-in{ opacity:1; transform:translateY(0); }
+    .bl-news-text h2{ font-size:clamp(26px,3.2vw,36px); font-weight:800; margin-bottom:14px; }
+    .bl-news-text p{ color:#bbb; font-size:15px; line-height:1.7; }
+
+    .bl-news-form{ display:flex; gap:12px; opacity:0; transition:opacity .7s ease .2s; flex-wrap:wrap; }
+    .bl-news-form.bl-in{ opacity:1; }
+
+    .bl-news-input{
+        padding:15px 20px;
+        border-radius:30px;
+        border:1px solid rgba(255,255,255,0.2);
+        background:rgba(255,255,255,0.06);
+        color:white;
+        font-size:14px;
+        font-family:"DM Sans", sans-serif;
+        min-width:240px;
+    }
+    .bl-news-input::placeholder{ color:#999; }
+
+    .bl-news-btn-wrap{ position:relative; display:inline-block; }
+    .bl-news-btn-wrap::before{
+        content:"";
+        position:absolute; inset:-8px;
+        border-radius:40px;
+        border:2px solid var(--pcolor);
+        opacity:0.7;
+        animation: bl-pulse 2s ease-out infinite;
+    }
+    @keyframes bl-pulse{
+        0%{ transform:scale(1); opacity:0.6; }
+        100%{ transform:scale(1.35); opacity:0; }
+    }
+    .bl-news-btn{
+        position:relative;
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        background:var(--pcolor);
+        color:#181818;
+        font-weight:700;
+        font-size:15px;
+        padding:16px 32px;
+        border-radius:30px;
+        border:none;
+        cursor:pointer;
+        font-family:"DM Sans", sans-serif;
+    }
+
+    @media(max-width:600px){
+        .bl-featured, .bl-latest, .bl-topics{ padding:70px 20px; }
+        .bl-kitchen-content{ padding:60px 20px; }
+        .bl-news{ margin:0 16px 70px; padding:50px 24px; }
+        .bl-news-form{ width:100%; }
+        .bl-news-input{ flex:1; }
+    }
+</style>
+</head>
+<body style="background:var(--cream);">
+
+<!-- ============ 1. BLOG INTRO BANNER ============ -->
+<section class="bl-section bl-intro">
+    <div class="bl-intro-bg" id="blIntroBg"></div>
+    <div class="bl-intro-overlay"></div>
+    <div class="bl-intro-content">
+        <span class="bl-eyebrow">Stackly Journal</span>
+        <h1>Stories from the grill, <span>tips from the kitchen.</span></h1>
+        <p>Recipes, behind-the-scenes notes and everything we're learning about food, told the way our cooks would tell it.</p>
+    </div>
+</section>
+
+<!-- ============ 2. FEATURED STORY ============ -->
+<section class="bl-section bl-featured">
+    <div class="bl-featured-inner">
+        <div class="bl-featured-img bl-reveal">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85" alt="Burger being assembled in kitchen">
+        </div>
+        <div class="bl-featured-text bl-reveal">
+            <span class="bl-featured-tag">Featured</span>
+            <h2>What actually makes a smash patty crispy</h2>
+            <p>It isn't the grill temperature everyone argues about — it's timing and pressure. We broke down every step of our patty process so you can try it at home, or just appreciate why yours takes ninety seconds longer than a drive-thru's.</p>
+            <div class="bl-featured-meta">
+                <span>Kitchen Notes</span>
+                <span>6 min read</span>
+            </div>
+            <a href="#" class="bl-featured-link">Read the full story<span class="material-symbols-outlined">arrow_right_alt</span></a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 3. LATEST ARTICLES ============ -->
+<section class="bl-section bl-latest">
+    <div class="bl-latest-head">
+        <h2>Latest from the <span>journal</span></h2>
+        <p>Fresh posts on food, sourcing and life behind the counter.</p>
+    </div>
+    <div class="bl-latest-grid">
+        <div class="bl-post-card bl-reveal">
+            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=500&q=80" alt="Fresh vegetables and produce">
+            <div class="bl-post-body">
+                <div class="bl-post-date">Sourcing</div>
+                <h4>Where our produce actually comes from</h4>
+                <p>A look at the three farms we work with and why we switched suppliers twice this year.</p>
+            </div>
+        </div>
+        <div class="bl-post-card bl-reveal">
+            <img src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?auto=format&fit=crop&w=500&q=80" alt="Chef preparing food in kitchen">
+            <div class="bl-post-body">
+                <div class="bl-post-date">Behind the Counter</div>
+                <h4>A day in the life of our night shift</h4>
+                <p>From prep at 4pm to the last order at midnight, told by the crew that runs it.</p>
+            </div>
+        </div>
+        <div class="bl-post-card bl-reveal">
+            <img src="https://images.unsplash.com/photo-1428515613728-6b4607e44363?auto=format&fit=crop&w=500&q=80" alt="Sauce being poured over food">
+            <div class="bl-post-body">
+                <div class="bl-post-date">Recipes</div>
+                <h4>The sauce we get asked about the most</h4>
+                <p>We're finally sharing a home version of our house sauce — close, but not identical.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 4. FROM THE KITCHEN ============ -->
+<section class="bl-section bl-kitchen">
+    <div class="bl-kitchen-bg" id="blKitchenBg"></div>
+    <div class="bl-kitchen-overlay"></div>
+    <div class="bl-kitchen-content bl-reveal">
+        <h2>Curious how we <span>run the kitchen?</span></h2>
+        <p>We write about the systems behind the food too — prep schedules, quality checks, and how we keep every order consistent during a rush.</p>
+        <a href="#" class="bl-kitchen-btn">Explore Kitchen Notes<span class="material-symbols-outlined">arrow_right_alt</span></a>
+    </div>
+</section>
+
+<!-- ============ 5. BROWSE BY TOPIC ============ -->
+<section class="bl-section bl-topics">
+    <div class="bl-topics-inner">
+        <div class="bl-topics-text">
+            <h2>Browse by topic</h2>
+            <p>Every post we publish sits under one of these — pick what you're curious about.</p>
+            <div class="bl-topics-stat">
+                <div><span class="bl-topics-num" data-target="140">0</span><p>Articles published</p></div>
+                <div><span class="bl-topics-num" data-target="9">0</span><p>Topics covered</p></div>
+            </div>
+        </div>
+        <div class="bl-chip-cloud">
+            <span class="bl-chip">Recipes</span>
+            <span class="bl-chip">Sourcing</span>
+            <span class="bl-chip">Kitchen Notes</span>
+            <span class="bl-chip">Behind the Counter</span>
+            <span class="bl-chip">Events</span>
+            <span class="bl-chip">Nutrition</span>
+            <span class="bl-chip">New Menu</span>
+            <span class="bl-chip">Franchise Life</span>
+            <span class="bl-chip">Community</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============ 6. NEWSLETTER SIGNUP ============ -->
+<section class="bl-section bl-news">
+    <div class="bl-news-inner">
+        <div class="bl-news-text bl-reveal">
+            <h2>Get new posts in your inbox.</h2>
+            <p>One email a week — a new recipe, a kitchen story, or a note from the team. No spam, unsubscribe anytime.</p>
+        </div>
+        <div class="bl-news-form bl-reveal">
+            <input type="email" class="bl-news-input" placeholder="Enter your email">
+            <div class="bl-news-btn-wrap">
+                <button type="button" class="bl-news-btn"><span class="material-symbols-outlined">send</span>Subscribe</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // scroll-reveal
+    const blRevealEls = document.querySelectorAll('.bl-reveal, .bl-post-card, .bl-kitchen-content, .bl-news-text, .bl-news-form, .bl-chip, .bl-featured-img, .bl-featured-text');
+    const blObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('bl-in');
+                blObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    blRevealEls.forEach(el => blObserver.observe(el));
+
+    // trigger the intro diagonal wipe on load
+    window.addEventListener('load', () => {
+        setTimeout(() => document.getElementById('blIntroBg').classList.add('bl-in'), 150);
+    });
+
+    // staggered delay for post cards and chips
+    document.querySelectorAll('.bl-latest-grid, .bl-chip-cloud').forEach(group => {
+        [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
+    });
+
+    // simple JS parallax on the kitchen background
+    const blKitchenSection = document.querySelector('.bl-kitchen');
+    const blKitchenBg = document.getElementById('blKitchenBg');
+    window.addEventListener('scroll', () => {
+        const rect = blKitchenSection.getBoundingClientRect();
+        const offset = rect.top * 0.15;
+        blKitchenBg.style.transform = `translateY(${offset}px)`;
+    });
+
+    // count-up numbers
+    const blStatEls = document.querySelectorAll('.bl-topics-num');
+    const blStatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseFloat(el.dataset.target);
+                let current = 0;
+                const step = Math.max(target / 50, 0.5);
+                const tick = () => {
+                    current += step;
+                    if (current >= target) {
+                        el.textContent = target + "+";
+                    } else {
+                        el.textContent = Math.floor(current) + "+";
+                        requestAnimationFrame(tick);
+                    }
+                };
+                tick();
+                blStatObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    blStatEls.forEach(el => blStatObserver.observe(el));
+</script>
+
+</body>
+</html>
