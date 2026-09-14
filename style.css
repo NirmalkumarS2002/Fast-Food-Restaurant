@@ -256,6 +256,10 @@ x .header2 a span {
     display: none;
 }
 
+body.menu-open {
+    overflow: hidden;
+        height: 100vh;
+}
 
 
 @media (max-width:1100px) {
@@ -273,6 +277,7 @@ x .header2 a span {
         transform: translateX(-100%);
         z-index: 9999;
     }
+
 
     .nav-container.active {
         transform: translateX(0);

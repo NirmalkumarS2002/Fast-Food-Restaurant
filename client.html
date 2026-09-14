@@ -124,6 +124,7 @@
         .sidebar-logo .adminclose {
             color: white;
             display: none;
+            cursor: pointer;
         }
 
         .sidebar-scroll {
@@ -1554,6 +1555,7 @@
             color: var(--ink);
         }
 
+
         @media (max-width: 1250px) {
             .bento .span-8 {
                 grid-column: span 12;
@@ -1596,6 +1598,12 @@
                 z-index: 9999;
                 width: 280px !important;
             }
+
+              body.menu-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+
 
             .sidebar-logo {
                 display: flex;
@@ -3009,10 +3017,12 @@
 
         topbarmenu.addEventListener("click", () => {
             sidebar.classList.toggle('vis')
+            document.body.classList.add("menu-open");
         })
 
         adminclose.addEventListener("click", () => {
             sidebar.classList.remove('vis')
+            document.body.classList.remove("menu-open");
         })
 
         railToggle.addEventListener("click", () => {

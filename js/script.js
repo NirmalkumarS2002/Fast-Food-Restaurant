@@ -1,35 +1,37 @@
 //navbar
 
-let menubtn=document.querySelector(".menu-btn")
-let closebtn=document.querySelector(".close-btn")
-let navcontainer=document.querySelector(".nav-container")
-menubtn.addEventListener("click",()=>{
+let menubtn = document.querySelector(".menu-btn")
+let closebtn = document.querySelector(".close-btn")
+let navcontainer = document.querySelector(".nav-container")
+menubtn.addEventListener("click", () => {
     navcontainer.classList.add("active")
+    document.body.classList.add("menu-open");
 })
 
-closebtn.addEventListener("click",()=>{
-        navcontainer.classList.remove("active")
+closebtn.addEventListener("click", () => {
+    navcontainer.classList.remove("active")
+        document.body.classList.remove("menu-open");
 })
 
 //
 
-let header=document.querySelector(".header")
-window.addEventListener("scroll",()=>{
-    if(window.scrollY>700){
+let header = document.querySelector(".header")
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 700) {
         header.classList.add("active")
     }
-    else{
+    else {
         header.classList.remove("active")
     }
 })
 
 //errorpage
 
-let errorpage=document.querySelectorAll(".errorpage")
-errorpage.forEach((error)=>{
-   error.addEventListener("click",()=>{
-    window.location.href="404.html"
-   })
+let errorpage = document.querySelectorAll(".errorpage")
+errorpage.forEach((error) => {
+    error.addEventListener("click", () => {
+        window.location.href = "404.html"
+    })
 })
 
 

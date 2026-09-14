@@ -11,7 +11,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -123,6 +124,7 @@
         .sidebar-logo .adminclose {
             color: white;
             display: none;
+            cursor: pointer;
         }
 
         .sidebar-scroll {
@@ -1529,6 +1531,8 @@
             color: var(--ink);
         }
 
+
+      
         @media (max-width: 1250px) {
             .bento .span-8 {
                 grid-column: span 12;
@@ -1571,6 +1575,12 @@
                 z-index: 9999;
                 width: 280px !important;
             }
+
+              body.menu-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+
 
             .sidebar-logo {
                 display: flex;
@@ -1714,7 +1724,8 @@
                 <button onclick="showView('listings', this)"><span
                         class="material-symbols-outlined">restaurant_menu</span>
                     <span class="label">Menu</span></button>
-                <button onclick="showView('staff', this)"><span class="material-symbols-outlined">sports_motorsports</span>
+                <button onclick="showView('staff', this)"><span
+                        class="material-symbols-outlined">sports_motorsports</span>
                     <span class="label">Riders</span></button>
                 <button onclick="showView('branches', this)"><span class="material-symbols-outlined">storefront</span>
                     <span class="label">Outlets</span></button>
@@ -1722,13 +1733,13 @@
                     <span class="label">Customers</span></button>
             </nav>
 
-     
+
             <nav class="side-nav">
                 <button onclick="showView('deals', this)"><span class="material-symbols-outlined">payments</span>
                     <span class="label">Payouts</span></button>
                 <button onclick="showView('messages', this)"><span class="material-symbols-outlined">forum</span>
                     <span class="label">Messages</span><span class="badge-count">5</span></button>
-                
+
                 <button class="logoutbtn"><span class="material-symbols-outlined">logout</span>
                     <span class="label">Logout</span></button>
             </nav>
@@ -1754,7 +1765,7 @@
                         style="font-size:14px;">chevron_right</span>
                     <span class="current" id="crumbTitle">Overview</span>
                 </div>
-                
+
             </div>
 
             <div class="topbar-row2">
@@ -1766,7 +1777,7 @@
                 </div>
                 <h2 id="topbarTitle">Overview</h2>
                 <div class="topbar-right">
-                   
+
                     <div class="icon-btn errorpage"><span class="material-symbols-outlined">notifications</span><span
                             class="dot"></span></div>
                     <div class="icon-btn errorpage"><span class="material-symbols-outlined">mail</span></div>
@@ -1825,7 +1836,8 @@
                                 Menu Item</span></button>
                         <button class="errorpage"><span class="material-symbols-outlined">post_add</span><span>New
                                 Order</span></button>
-                        <button class="errorpage"><span class="material-symbols-outlined">sports_motorsports</span><span>Add
+                        <button class="errorpage"><span
+                                class="material-symbols-outlined">sports_motorsports</span><span>Add
                                 Rider</span></button>
                         <button class="errorpage"><span class="material-symbols-outlined">summarize</span><span>Generate
                                 Report</span></button>
@@ -2223,7 +2235,8 @@
                                 <h4>Double Smash Burger</h4>
                                 <p class="loc">Burgers · Beef patty, cheddar, house sauce</p>
                                 <div class="ingredient-tags">
-                                    <span>Beef Patty</span><span>Cheddar</span><span>House Sauce</span><span>Sesame Bun</span>
+                                    <span>Beef Patty</span><span>Cheddar</span><span>House Sauce</span><span>Sesame
+                                        Bun</span>
                                 </div>
                                 <div class="l-meta">
                                     <span class="l-price">₹249</span>
@@ -3111,10 +3124,12 @@
 
         topbarmenu.addEventListener("click", () => {
             sidebar.classList.toggle('vis')
+            document.body.classList.add("menu-open");
         })
 
         adminclose.addEventListener("click", () => {
             sidebar.classList.remove('vis')
+            document.body.classList.remove("menu-open");
         })
 
         railToggle.addEventListener("click", () => {
@@ -3130,7 +3145,7 @@
 
         const username = document.querySelector("#username");
 
-        let email=localStorage.getItem("useremail")
+        let email = localStorage.getItem("useremail")
 
 
         if (email) {
