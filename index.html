@@ -461,6 +461,23 @@
             transition: opacity 0.9s ease, transform 0.9s ease;
         }
 
+        .delay-1{
+            transition-delay: .2s;
+        }
+        .delay-2{
+            transition-delay: .4s;
+        }
+        .delay-3{
+            transition-delay: .6s;
+        }
+         .delay-4{
+            transition-delay: .8s;
+        }
+
+         .delay-5{
+            transition-delay: .10s;
+        }
+
         .sk-reveal.sk-in {
             opacity: 1;
         }
@@ -908,10 +925,14 @@
 
         /* =========== 5. TODAY'S OFFER (banner with shine sweep) =========== */
 
+        .sk-offer-wrap{
+            display: flex;
+            justify-content: center;
+        }
         .sk-offer {
             position: relative;
             margin: 90px 30px;
-            max-width: 1200px;
+           width: 1200px;
             margin-left: 20px;
             margin-right: 20px;
             border-radius: 28px;
@@ -1185,12 +1206,16 @@
 
         /* =========== 8. ORDER CTA / NEWSLETTER (pulsing ring button) =========== */
 
+
+        .cta-wrap{
+            display: flex;
+            justify-content: center;
+        }
+
         .sk-cta {
             position: relative;
             margin: 0 30px 100px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 1200px;
             background: var(--dark2);
             border-radius: 28px;
             padding: 70px 40px;
@@ -1338,22 +1363,22 @@
 
             <div class="hero-content">
 
-                <span class="small-title">
+                <span class="small-title sk-reveal delay-1">
                     Fresh · Fast · Delicious
                 </span>
 
-                <h1>
+                <h1 class="sk-reveal delay-2">
                     Good Food.<br>
                     <span>Good Mood.</span>
                 </h1>
 
-                <p>
+                <p class="sk-reveal delay-3">
                     Crispy burgers, loaded fries and freshly made
                     meals delivered straight to your door.
                     Big flavours, fresh ingredients and fast service.
                 </p>
 
-                <div class="hero-buttons">
+                <div class="hero-buttons sk-reveal delay-4">
 
                     <a href="404.html" class="primary-btn">
                         Explore Menu
@@ -1400,7 +1425,7 @@
 
         <div class="features">
 
-            <div class="feature">
+            <div class="feature sk-reveal">
 
                 <div class="feature-icon">
                     01
@@ -1414,7 +1439,7 @@
             </div>
 
 
-            <div class="feature">
+            <div class="feature sk-reveal ">
 
                 <div class="feature-icon">
                     02
@@ -1428,7 +1453,7 @@
             </div>
 
 
-            <div class="feature">
+            <div class="feature sk-reveal">
 
                 <div class="feature-icon">
                     03
@@ -1628,7 +1653,9 @@
     </section>
 
     <!-- ============ 5. TODAY'S OFFER ============ -->
-    <section class="sk-section sk-offer">
+   
+    <section class="sk-offer-wrap">
+         <section class="sk-section sk-offer">
         <div class="sk-offer-content">
             <span class="sk-tag">Limited time</span>
             <h2>Buy 1 Get 1 on all burgers, today only.</h2>
@@ -1637,6 +1664,7 @@
             <a href="404.html" class="sk-offer-btn">Claim Offer<span
                     class="material-symbols-outlined">arrow_right_alt</span></a>
         </div>
+    </section>
     </section>
 
     <!-- ============ 6. GALLERY ============ -->
@@ -1706,12 +1734,15 @@
     </section>
 
     <!-- ============ 8. ORDER CTA ============ -->
-    <section class="sk-section sk-cta">
+ 
+    <section class="cta-wrap">
+           <section class="sk-section sk-cta">
         <h2>Hungry already?</h2>
         <p>Order online in under a minute and track your food from our kitchen to your door.</p>
         <div class="sk-cta-btn-wrap">
             <a href="404.html" class="sk-cta-btn"><span class="material-symbols-outlined">shopping_bag</span>Order Now</a>
         </div>
+    </section>
     </section>
 
 

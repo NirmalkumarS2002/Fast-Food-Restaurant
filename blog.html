@@ -511,13 +511,14 @@
         }
 
         /* =========== 6. NEWSLETTER SIGNUP (pulse + fade) =========== */
-
+        .bl-news-wrap{
+            display: flex;
+            justify-content: center;
+        }
         .bl-news {
             position: relative;
-            margin: 30px 100px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin:0 30px 100px;
+            width: 1200px;
             background: var(--dark2);
             border-radius: 28px;
             padding: 70px 40px;
@@ -839,7 +840,8 @@
     </section>
 
     <!-- ============ 6. NEWSLETTER SIGNUP ============ -->
-    <section class="bl-section bl-news">
+    <section class="bl-news-wrap">
+            <section class="bl-section bl-news">
         <div class="bl-news-inner">
             <div class="bl-news-text">
                 <h2>Never miss a story</h2>
@@ -860,6 +862,7 @@
 
     </section>
 
+    </section>
 
     <footer class="footer-section reveal">
 

@@ -14,9 +14,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
 
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-        
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -203,7 +203,7 @@
         .ct-reach-card a {
             color: #181818;
             text-decoration: none;
-            font-weight: 600;
+            font-size: 13px;
         }
 
         @media(max-width:900px) {
@@ -272,7 +272,7 @@
             color: var(--pcolor);
         }
 
-        .ct-form-box>p {
+        .ct-form-box .formpara {
             color: #aaa;
             font-size: 14px;
             line-height: 1.7;
@@ -500,6 +500,7 @@
 
         .ct-chip {
             padding: 10px 20px;
+            cursor: pointer;
             border-radius: 30px;
             border: 1px solid rgba(0, 0, 0, 0.15);
             font-size: 14px;
@@ -528,13 +529,15 @@
         }
 
         /* =========== 6. QUICK QUESTIONS CTA (pulse + info fade) =========== */
+        .ct-cta-wrap {
+            display: flex;
+            justify-content: center;
+        }
 
         .ct-cta {
             position: relative;
             margin: 0 30px 100px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 1200px;
             background: var(--dark2);
             border-radius: 28px;
             padding: 70px 40px;
@@ -596,7 +599,7 @@
         .ct-cta-actions.ct-in {
             opacity: 1;
         }
-     
+
         .ct-cta-btn {
             position: relative;
             display: inline-flex;
@@ -613,9 +616,9 @@
             transition: .5s ease;
         }
 
-               .ct-cta-btn:hover{
-                transform: translateY(-5px);
-               }
+        .ct-cta-btn:hover {
+            transform: translateY(-5px);
+        }
 
         .ct-cta-call {
             display: flex;
@@ -628,13 +631,21 @@
             z-index: 1;
             cursor: pointer;
         }
-          .ct-cta-call:hover{
+
+        .ct-cta-call:hover {
             color: var(--pcolor);
-          }
+        }
 
         .ct-cta-call span.material-symbols-outlined {
             color: var(--pcolor);
             font-size: 22px;
+        }
+
+        @media (max-width:500px) {
+            .ct-cta-actions {
+                flex-direction: column;
+                gap: 30px;
+            }
         }
 
         /* =========== 7. MEET THE TEAM (staggered rise + flip hover) =========== */
@@ -845,12 +856,23 @@
                 padding: 50px 24px;
             }
         }
+
+        .cerror {
+            color: red;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        .cerror.top {
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
 <body style="background:var(--cream);">
 
-       <header class="header">
+    <header class="header">
 
         <div class="header1">
             <div class="nav-time">
@@ -886,7 +908,7 @@
                 </div>
 
                 <ul class="nav-bar">
-                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="service.html">Services</a></li>
                     <li><a href="blog.html">Blogs</a></li>
@@ -954,23 +976,37 @@
     <section class="ct-section ct-form-sec">
         <div class="ct-form-inner">
             <div class="ct-form-img ct-reveal">
-                <img src="./src/2.webp"
-                    alt="Restaurant staff taking a phone order">
+                <img src="./src/2.webp" alt="Restaurant staff taking a phone order">
             </div>
             <div class="ct-form-box ct-reveal">
                 <h2>Send us a <span>message</span></h2>
-                <p>Fill this in and someone from the team will get back to you within a day.</p>
+                <p class="formpara">Fill this in and someone from the team will get back to you within a day.</p>
                 <div class="ct-form-row">
-                    <input type="text" class="ct-field" placeholder="First name">
-                    <input type="text" class="ct-field" placeholder="Last name">
+                    <div>
+                        <input type="text" class="ct-field" placeholder="First name" id="confirst">
+                        <p class="cerror"></p>
+                    </div>
+                    <div>
+                        <input type="text" class="ct-field" placeholder="Last name" id="conlast">
+                        <p class="cerror"></p>
+                    </div>
                 </div>
                 <div class="ct-form-row">
-                    <input type="email" class="ct-field" placeholder="Email address">
-                    <input type="tel" class="ct-field" placeholder="Phone number">
+                    <div>
+                        <input type="email" class="ct-field" placeholder="Email address" id="conadd">
+                        <p class="cerror"></p>
+                    </div>
+                    <div>
+                        <input type="tel" class="ct-field" placeholder="Phone number" id="contell">
+                        <p class="cerror"></p>
+                    </div>
                 </div>
-                <textarea class="ct-field" placeholder="Tell us what you need..."></textarea>
-                <button type="button" class="ct-form-btn">Send Message<span
+                <textarea class="ct-field" placeholder="Tell us what you need..." id="conarea"></textarea>
+                <p class="cerror top"></p>
+                <button type="button" class="ct-form-btn" id="conubtton">Send Message<span
                         class="material-symbols-outlined">send</span></button>
+                <p class="cerror submsg"></p>
+
             </div>
         </div>
     </section>
@@ -992,7 +1028,8 @@
         <div class="ct-outlets-inner">
             <div class="ct-outlets-text ct-reveal">
                 <h2>Not just one <span style="color:var(--pcolor)">kitchen</span></h2>
-                <p>We started with a single counter in Chennai. Today we run outlets across the south, all following the same recipes and quality checks.</p>
+                <p>We started with a single counter in Chennai. Today we run outlets across the south, all following the
+                    same recipes and quality checks.</p>
                 <div class="ct-outlets-stat">
                     <div>
                         <span class="ct-outlets-num" data-target="12">0+</span>
@@ -1004,10 +1041,10 @@
                     </div>
                 </div>
                 <div class="ct-chip-cloud">
-                    <span class="ct-chip">Chennai</span>
-                    <span class="ct-chip">Coimbatore</span>
-                    <span class="ct-chip">Madurai</span>
-                    <span class="ct-chip">Bengaluru</span>
+                    <span class="ct-chip errorpage">Chennai</span>
+                    <span class="ct-chip errorpage">Coimbatore</span>
+                    <span class="ct-chip errorpage">Madurai</span>
+                    <span class="ct-chip errorpage">Bengaluru</span>
                 </div>
             </div>
             <div class="ct-outlets-img ct-reveal">
@@ -1017,19 +1054,25 @@
     </section>
 
     <!-- ============ 6. QUICK QUESTIONS CTA ============ -->
-    <section class="ct-section ct-cta">
-        <div class="ct-cta-inner">
-            <div class="ct-cta-text">
-                <h2>Still have a quick question?</h2>
-                <p>Skip the form — chat with us directly or give the kitchen a call, we're around most of the day.</p>
-            </div>
-            <div class="ct-cta-actions">
-                <div class="ct-cta-btn-wrap">
-                    <a href="404.html" class="ct-cta-btn">Chat With Us<span class="material-symbols-outlined">chat</span></a>
+
+    <section class="ct-cta-wrap">
+        <section class="ct-section ct-cta">
+            <div class="ct-cta-inner">
+                <div class="ct-cta-text">
+                    <h2>Still have a quick question?</h2>
+                    <p>Skip the form — chat with us directly or give the kitchen a call, we're around most of the day.
+                    </p>
                 </div>
-                <a href="404.html" class="ct-cta-call"><span class="material-symbols-outlined">call</span>+91 12345 09876</a>
+                <div class="ct-cta-actions">
+                    <div class="ct-cta-btn-wrap">
+                        <a href="404.html" class="ct-cta-btn">Chat With Us<span
+                                class="material-symbols-outlined">chat</span></a>
+                    </div>
+                    <a href="404.html" class="ct-cta-call"><span class="material-symbols-outlined">call</span>+91 12345
+                        09876</a>
+                </div>
             </div>
-        </div>
+        </section>
     </section>
 
 
@@ -1076,29 +1119,36 @@
             </div>
 
             <div class="ct-faq-item">
-                <div class="ct-faq-q">How fast do you usually reply?<span class="material-symbols-outlined">add</span></div>
-                <div class="ct-faq-a">Within a day for the contact form, and almost instantly on call during office hours (Mon–Fri, 9:00–6:00).</div>
+                <div class="ct-faq-q">How fast do you usually reply?<span class="material-symbols-outlined">add</span>
+                </div>
+                <div class="ct-faq-a">Within a day for the contact form, and almost instantly on call during office
+                    hours (Mon–Fri, 9:00–6:00).</div>
             </div>
 
             <div class="ct-faq-item">
-                <div class="ct-faq-q">Do you take bulk or catering orders?<span class="material-symbols-outlined">add</span></div>
-                <div class="ct-faq-a">Yes — reach out to our Partnerships team through the form or email and we'll get a quote back to you the same day.</div>
+                <div class="ct-faq-q">Do you take bulk or catering orders?<span
+                        class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">Yes — reach out to our Partnerships team through the form or email and we'll get a
+                    quote back to you the same day.</div>
             </div>
 
             <div class="ct-faq-item">
-                <div class="ct-faq-q">Can I visit an outlet without calling ahead?<span class="material-symbols-outlined">add</span></div>
-                <div class="ct-faq-a">Of course, walk-ins are always welcome at every outlet during office hours — no booking needed.</div>
+                <div class="ct-faq-q">Can I visit an outlet without calling ahead?<span
+                        class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">Of course, walk-ins are always welcome at every outlet during office hours — no
+                    booking needed.</div>
             </div>
 
             <div class="ct-faq-item">
                 <div class="ct-faq-q">Are you hiring?<span class="material-symbols-outlined">add</span></div>
-                <div class="ct-faq-a">We're growing outlets often, so send your resume to admin@gmail.com and Meera's team will follow up.</div>
+                <div class="ct-faq-a">We're growing outlets often, so send your resume to admin@gmail.com and Meera's
+                    team will follow up.</div>
             </div>
         </div>
     </section>
 
 
-        <footer class="footer-section reveal">
+    <footer class="footer-section reveal">
 
         <div class="footer-section-top">
             <div class="footer1">
@@ -1106,7 +1156,7 @@
                     <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
                 </div>
 
-               <p class="footer-des">What's Inside: Fresh Flavors, Tasty Deals, New Menu & More</p>
+                <p class="footer-des">What's Inside: Fresh Flavors, Tasty Deals, New Menu & More</p>
 
                 <div class="subscribe-container">
                     <input type="email" placeholder="Subscribe" id="footer-email">
@@ -1122,7 +1172,7 @@
 
             </div>
 
-         
+
             <div class="footer2">
                 <h2>Quick Links</h2>
 
@@ -1155,7 +1205,7 @@
                     <div class=" footer-details">
                         <span class="material-symbols-outlined">location_on</span>
                         <div>
-                        
+
                             <p class="errorpage"> 25, Daniel Street, Chennai</p>
                         </div>
                     </div>
@@ -1255,6 +1305,178 @@
             });
         }, { threshold: 0.5 });
         ctStatEls.forEach(el => ctStatObserver.observe(el));
+
+
+        //form validation
+
+        const confirst = document.querySelector("#confirst");
+        const conlast = document.querySelector("#conlast");
+        const conadd = document.querySelector("#conadd");
+        const contell = document.querySelector("#contell");
+        const conarea = document.querySelector("#conarea");
+        const conubtton = document.querySelector("#conubtton");
+
+        const cerrors = document.querySelectorAll(".cerror");
+
+        confirst.addEventListener("input", () => {
+            confirst.value = confirst.value.replace(/[^A-Za-z\s]/g, "");
+        });
+
+        conlast.addEventListener("input", () => {
+            conlast.value = conlast.value.replace(/[^A-Za-z\s]/g, "");
+        });
+
+        contell.addEventListener("input", () => {
+            contell.value = contell.value.replace(/\D/g, "");
+
+            if (contell.value.length > 10) {
+                contell.value = contell.value.slice(0, 10);
+            }
+        });
+
+
+        conubtton.addEventListener("click", () => {
+
+            let valid = true;
+
+
+            // First Name
+            const firstName = confirst.value.trim();
+            const firstError = confirst.nextElementSibling;
+
+            if (firstName === "") {
+
+                firstError.textContent = "First name is required";
+                valid = false;
+
+            } else if (!/^[A-Za-z]+(?:\s[A-Za-z]+)*$/.test(firstName)) {
+
+                firstError.textContent = "Name should contain letters only";
+                valid = false;
+
+            } else {
+
+                firstError.textContent = "";
+            }
+
+
+
+            // Last Name
+            const lastName = conlast.value.trim();
+            const lastError = conlast.nextElementSibling;
+
+            if (lastName === "") {
+
+                lastError.textContent = "Last name is required";
+                valid = false;
+
+            } else if (!/^[A-Za-z]+(?:\s[A-Za-z]+)*$/.test(lastName)) {
+
+                lastError.textContent = "Name should contain letters only";
+                valid = false;
+
+            } else {
+
+                lastError.textContent = "";
+            }
+
+
+
+            // Email
+            const email = conadd.value.trim();
+            const emailError = conadd.nextElementSibling;
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email === "") {
+
+                emailError.textContent = "Email is required";
+                valid = false;
+
+            } else if (!emailPattern.test(email)) {
+
+                emailError.textContent = "Enter a valid email address";
+                valid = false;
+
+            } else {
+
+                emailError.textContent = "";
+            }
+
+
+
+            // Phone
+            const phone = contell.value.trim();
+            const phoneError = contell.nextElementSibling;
+
+            if (phone === "") {
+
+                phoneError.textContent = "Phone number is required";
+                valid = false;
+
+            } else if (!/^[0-9]+$/.test(phone)) {
+
+                phoneError.textContent = "Phone number should contain numbers only";
+                valid = false;
+
+            } else if (phone.length !== 10) {
+
+                phoneError.textContent = "Phone number must be 10 digits";
+                valid = false;
+
+            } else {
+
+                phoneError.textContent = "";
+            }
+
+
+
+            // Message
+            const message = conarea.value.trim();
+            const messageError = conarea.nextElementSibling;
+
+            if (message === "") {
+
+                messageError.textContent = "Message is required";
+                valid = false;
+
+            } else if (message.length < 10) {
+
+                messageError.textContent = "Message must be at least 10 characters";
+                valid = false;
+
+            } else {
+
+                messageError.textContent = "";
+            }
+
+
+
+            // All valid
+            if (valid) {
+
+
+                const submitMessage = document.querySelector(".ct-form-box .submsg");
+
+                submitMessage.textContent = "Submitted successfully!";
+                submitMessage.style.color = "green"
+
+                // Clear fields
+                confirst.value = "";
+                conlast.value = "";
+                conadd.value = "";
+                contell.value = "";
+                conarea.value = "";
+
+                // 3 seconds after message disappears
+                setTimeout(() => {
+                    submitMessage.textContent = "";
+                }, 3000);
+
+            }
+
+        });
     </script>
 
 </body>

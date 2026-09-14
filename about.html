@@ -548,10 +548,14 @@
 
         /* =========== 6. ACHIEVEMENTS + JOIN CTA (count-up + pulse) =========== */
 
+        .ab-achieve-wrap{
+            display: flex;
+            justify-content: center;
+        }
         .ab-achieve {
             position: relative;
             margin: 0 30px 100px;
-            max-width: 1200px;
+            width: 1200px;
             margin-left: 20px;
             margin-right: 20px;
             background: var(--dark2);
@@ -729,7 +733,7 @@
     <section class="ab-section ab-intro">
         <div class="ab-intro-bg" id="svIntroBg"></div>
           <div class="sv-intro-overlay"></div>
-        <div class="ab-intro-content ab-reveal">
+        <div class="ab-intro-content">
             <span class="ab-eyebrow">About Stackly</span>
             <h1>The story behind <span>every plate.</span></h1> 
             <p>From a single street counter to a full kitchen — this is how Stackly turned fast food into food worth
@@ -891,7 +895,9 @@
     </section>
 
     <!-- ============ 6. ACHIEVEMENTS + JOIN CTA ============ -->
-    <section class="ab-section ab-achieve">
+  
+    <section class="ab-achieve-wrap">
+          <section class="ab-section ab-achieve">
         <div class="ab-achieve-inner">
             <div class="ab-achieve-stats">
                 <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="8">0</span>
@@ -918,6 +924,7 @@
                 </div>
             </div>
         </div>
+    </section>
     </section>
 
     <footer class="footer-section reveal">

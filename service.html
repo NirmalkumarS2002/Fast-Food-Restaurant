@@ -511,17 +511,20 @@
         @media(max-width:900px) {
             .sv-areas-inner {
                 grid-template-columns: 1fr;
+                gap: 10px;
             }
         }
 
         /* =========== 6. READY TO BOOK CTA (pulse + info fade) =========== */
 
+        .sv-cta-wrap{
+            display: flex;
+            justify-content: center;
+        }
         .sv-cta {
             position: relative;
             margin: 0 30px 100px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 1200px;
             background: var(--dark2);
             border-radius: 28px;
             padding: 70px 40px;
@@ -640,6 +643,11 @@
                 margin: 0 16px 70px;
                 padding: 50px 24px;
             }
+
+            .sv-cta-actions{
+                flex-direction: column;
+                gap: 40px;
+            }
         }
     </style>
 </head>
@@ -708,7 +716,7 @@
 
     <!-- ============ 1. SERVICES INTRO BANNER ============ -->
     <section class="sv-section sv-intro">
-        <div class="sv-intro-bg" id="svIntroBg"></div>
+        <div class="sv-intro-bg " id="svIntroBg"></div>
         <div class="sv-intro-overlay"></div>
         <div class="sv-intro-content">
             <span class="sv-eyebrow">Our Services</span>
@@ -833,7 +841,8 @@
     </section>
 
     <!-- ============ 6. READY TO BOOK CTA ============ -->
-    <section class="sv-section sv-cta">
+    <section class="sv-cta-wrap">
+           <section class="sv-section sv-cta">
         <div class="sv-cta-inner">
             <div class="sv-cta-text sv-reveal">
                 <h2>Ready when you are.</h2>
@@ -849,6 +858,7 @@
                 </a>
             </div>
         </div>
+    </section>
     </section>
 
     <footer class="footer-section reveal">
