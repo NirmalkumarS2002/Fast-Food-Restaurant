@@ -14,6 +14,12 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
 
+        <link rel="stylesheet" href="style.css">
+
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --pcolor: #FFCC33;
@@ -68,7 +74,7 @@
         .ct-intro-bg {
             position: absolute;
             inset: 0;
-            background: url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1800&q=85");
+            background: url("./src/image_33.webp");
             background-size: cover;
             background-position: center;
             clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -346,7 +352,7 @@
         .ct-find-bg {
             position: absolute;
             inset: -15% 0;
-            background: url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1800&q=85");
+            background: url("./src/4.webp");
             background-size: cover;
             background-position: center;
             will-change: transform;
@@ -410,7 +416,7 @@
             transform: translateY(-4px);
         }
 
-        /* =========== 5. OUR OUTLETS (chip pop + count-up) =========== */
+        /* =========== 5. OUR OUTLETS (image slide + chip pop + count-up) =========== */
 
         .ct-outlets {
             padding: 100px 30px;
@@ -424,6 +430,28 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+        }
+
+        .ct-outlets-img {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity .9s ease, transform .9s ease;
+        }
+
+        .ct-outlets-img.ct-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ct-outlets-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .ct-outlets-text h2 {
@@ -625,11 +653,202 @@
             font-size: 22px;
         }
 
+        /* =========== 7. MEET THE TEAM (staggered rise + flip hover) =========== */
+
+        .ct-team {
+            padding: 100px 30px;
+            background: var(--dark1);
+            color: white;
+        }
+
+        .ct-team-head {
+            max-width: 600px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .ct-team-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ct-team-head h2 span {
+            color: var(--pcolor);
+        }
+
+        .ct-team-head p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .ct-team-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            perspective: 1200px;
+        }
+
+        .ct-team-card {
+            background: var(--dark2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 30px 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(36px) rotateX(-8deg);
+            transition: opacity .7s ease, transform .7s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .ct-team-card.ct-in {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
+        }
+
+        .ct-team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 204, 51, 0.35);
+        }
+
+        .ct-team-avatar {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 204, 51, 0.14);
+            border: 2px solid rgba(255, 204, 51, 0.4);
+            color: var(--pcolor);
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        .ct-team-card h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .ct-team-role {
+            font-size: 12px;
+            color: var(--pcolor);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .ct-team-card p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        @media(max-width:900px) {
+            .ct-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:500px) {
+            .ct-team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========== 8. FAQ (accordion) =========== */
+
+        .ct-faq {
+            padding: 100px 30px;
+            background: var(--cream);
+        }
+
+        .ct-faq-inner {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .ct-faq-head {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .ct-faq-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ct-faq-head h2 span {
+            color: var(--pcolor);
+        }
+
+        .ct-faq-head p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .ct-faq-item {
+            border-bottom: var(--border);
+            padding: 22px 4px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease, transform .6s ease;
+            cursor: pointer;
+        }
+
+        .ct-faq-item.ct-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ct-faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 16px;
+            gap: 20px;
+        }
+
+        .ct-faq-q .material-symbols-outlined {
+            transition: transform .35s ease;
+            color: var(--pcolor);
+            flex-shrink: 0;
+        }
+
+        .ct-faq-item.ct-open .ct-faq-q .material-symbols-outlined {
+            transform: rotate(135deg);
+        }
+
+        .ct-faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease, opacity .4s ease, margin-top .4s ease;
+            opacity: 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.75;
+            max-width: 680px;
+        }
+
+        .ct-faq-item.ct-open .ct-faq-a {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 14px;
+        }
+
         @media(max-width:600px) {
 
             .ct-reach,
             .ct-form-sec,
-            .ct-outlets {
+            .ct-outlets,
+            .ct-team,
+            .ct-faq {
                 padding: 70px 20px;
             }
 
@@ -646,6 +865,66 @@
 </head>
 
 <body style="background:var(--cream);">
+
+       <header class="header">
+
+        <div class="header1">
+            <div class="nav-time">
+                <a href="404.html"><span class="material-symbols-outlined">location_on</span>Office Hours | Mon - Fri |
+                    9:00 -
+                    6:00 </a>
+            </div>
+
+            <div class="nav-sotial-icons">
+                <a href="404.html"> <i class="fa-brands fa-whatsapp"></i></a>
+                <a href="404.html"> <i class="fa-brands fa-facebook"></i></a>
+                <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+
+            <div class="nav-contact-details">
+
+                <a href="404.html"><span class="material-symbols-outlined">location_on</span>Chennai,Tamil Nadu</a>
+                <a href="404.html"><span class="material-symbols-outlined">mail</span>admin@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="header2">
+            <a href="index.html" class="company-logo"><img src="./src/logo.webp" alt="Company Logo"
+                    class="logo-img"></a>
+
+            <div class="nav-container">
+
+                <div class="sidebar-logo-container">
+
+                    <a href="index.html"><img src="./src/logo.webp" alt="" class="s-logo"></a>
+                    <span class="material-symbols-outlined close-btn">close</span>
+                </div>
+
+                <ul class="nav-bar">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <div class="search-sections">
+                <a href="404.html"><span class="material-symbols-outlined">call</span>+91 12345 09876</a>
+                <a href="login.html" class="login-btn"><span class="material-symbols-outlined">person</span>Login</a>
+            </div>
+
+            <div class="menu-container">
+                <a href="login.html"><span class="material-symbols-outlined">person</span></a>
+                <span class="material-symbols-outlined menu-btn">menu</span>
+            </div>
+
+
+        </div>
+
+    </header>
 
     <!-- ============ 1. CONTACT INTRO BANNER ============ -->
     <section class="ct-section ct-intro">
@@ -666,23 +945,23 @@
             <p>Pick whichever's easiest — we're usually quick to reply on all three.</p>
         </div>
         <div class="ct-reach-grid">
-            <div class="ct-reach-card ct-reveal">
+            <div class="ct-reach-card ct-reveal errorpage">
                 <span class="material-symbols-outlined">call</span>
                 <h4>Call the kitchen</h4>
                 <p>Speak to our team directly for orders or urgent queries.</p>
-                <a href="tel:+911234509876">+91 12345 09876</a>
+                <a href="404.html">+91 12345 09876</a>
             </div>
-            <div class="ct-reach-card ct-reveal">
+            <div class="ct-reach-card ct-reveal errorpage">
                 <span class="material-symbols-outlined">mail</span>
                 <h4>Email us</h4>
                 <p>For catering enquiries, feedback or partnership requests.</p>
-                <a href="mailto:hello@stackly.com">hello@stackly.com</a>
+                <a href="404.html">hello@stackly.com</a>
             </div>
-            <div class="ct-reach-card ct-reveal">
+            <div class="ct-reach-card ct-reveal errorpage">
                 <span class="material-symbols-outlined">location_on</span>
                 <h4>Visit in person</h4>
                 <p>Drop by our flagship kitchen for dine-in or a quick chat.</p>
-                <a href="#">14 Grill Street, Chennai</a>
+                <a href="404.html">14 Grill Street, Chennai</a>
             </div>
         </div>
     </section>
@@ -691,7 +970,7 @@
     <section class="ct-section ct-form-sec">
         <div class="ct-form-inner">
             <div class="ct-form-img ct-reveal">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=85"
+                <img src="./src/2.webp"
                     alt="Restaurant staff taking a phone order">
             </div>
             <div class="ct-form-box ct-reveal">
@@ -719,7 +998,7 @@
         <div class="ct-find-content ct-reveal">
             <h2>Come find us <span>in person.</span></h2>
             <p>Our flagship kitchen is open through the week for dine-in and takeaway — walk-ins are always welcome.</p>
-            <a href="#" class="ct-find-btn">Get Directions<span
+            <a href="404.html" class="ct-find-btn">Get Directions<span
                     class="material-symbols-outlined">arrow_right_alt</span></a>
         </div>
     </section>
@@ -727,27 +1006,29 @@
     <!-- ============ 5. OUR OUTLETS ============ -->
     <section class="ct-section ct-outlets">
         <div class="ct-outlets-inner">
-            <div class="ct-outlets-text">
-                <h2>Our outlets near you</h2>
-                <p>Already open in these neighbourhoods — pick the one closest to you.</p>
+            <div class="ct-outlets-text ct-reveal">
+                <h2>Not just one <span style="color:var(--pcolor)">kitchen</span></h2>
+                <p>We started with a single counter in Chennai. Today we run outlets across the south, all following the same recipes and quality checks.</p>
                 <div class="ct-outlets-stat">
-                    <div><span class="ct-outlets-num" data-target="24">0</span>
-                        <p>Outlets open</p>
+                    <div>
+                        <span class="ct-outlets-num" data-target="12">0+</span>
+                        <p>Cities Served</p>
                     </div>
-                    <div><span class="ct-outlets-num" data-target="7">0</span>
-                        <p>Days a week</p>
+                    <div>
+                        <span class="ct-outlets-num" data-target="30">0+</span>
+                        <p>Outlets Running</p>
                     </div>
                 </div>
+                <div class="ct-chip-cloud">
+                    <span class="ct-chip">Chennai</span>
+                    <span class="ct-chip">Coimbatore</span>
+                    <span class="ct-chip">Madurai</span>
+                    <span class="ct-chip">Bengaluru</span>
+                    <span class="ct-chip">Hyderabad</span>
+                </div>
             </div>
-            <div class="ct-chip-cloud">
-                <span class="ct-chip">Anna Nagar</span>
-                <span class="ct-chip">T. Nagar</span>
-                <span class="ct-chip">Velachery</span>
-                <span class="ct-chip">Adyar</span>
-                <span class="ct-chip">Porur</span>
-                <span class="ct-chip">OMR</span>
-                <span class="ct-chip">Nungambakkam</span>
-                <span class="ct-chip">Tambaram</span>
+            <div class="ct-outlets-img ct-reveal">
+                <img src="./src/4.webp" alt="Stackly outlet storefront">
             </div>
         </div>
     </section>
@@ -755,24 +1036,178 @@
     <!-- ============ 6. QUICK QUESTIONS CTA ============ -->
     <section class="ct-section ct-cta">
         <div class="ct-cta-inner">
-            <div class="ct-cta-text ct-reveal">
-                <h2>Still have a question?</h2>
-                <p>Check our most common questions, or just pick up the phone and ask us directly.</p>
+            <div class="ct-cta-text">
+                <h2>Still have a quick question?</h2>
+                <p>Skip the form — chat with us directly or give the kitchen a call, we're around most of the day.</p>
             </div>
-            <div class="ct-cta-actions ct-reveal">
+            <div class="ct-cta-actions">
                 <div class="ct-cta-btn-wrap">
-                    <a href="#" class="ct-cta-btn"><span class="material-symbols-outlined">quiz</span>View FAQs</a>
+                    <a href="404.html" class="ct-cta-btn">Chat With Us<span class="material-symbols-outlined">chat</span></a>
                 </div>
-                <a href="tel:+911234509876" class="ct-cta-call">
-                    <span class="material-symbols-outlined">call</span>+91 12345 09876
-                </a>
+                <a href="404.html" class="ct-cta-call"><span class="material-symbols-outlined">call</span>+91 12345 09876</a>
             </div>
         </div>
     </section>
 
+
+    <!-- ============ 7. MEET THE TEAM ============ -->
+    <section class="ct-section ct-team">
+        <div class="ct-team-head">
+            <h2>The people behind <span>the counter</span></h2>
+            <p>A small team that actually answers the phone when you call.</p>
+        </div>
+        <div class="ct-team-grid">
+            <div class="ct-team-card">
+                <div class="ct-team-avatar">K</div>
+                <h4>Karthik R.</h4>
+                <div class="ct-team-role">Head Chef</div>
+                <p>Runs the kitchen and signs off on every new recipe before it ships.</p>
+            </div>
+            <div class="ct-team-card">
+                <div class="ct-team-avatar">M</div>
+                <h4>Meera S.</h4>
+                <div class="ct-team-role">Customer Care</div>
+                <p>First person you'll talk to on call or email — usually within the hour.</p>
+            </div>
+            <div class="ct-team-card">
+                <div class="ct-team-avatar">V</div>
+                <h4>Vishal N.</h4>
+                <div class="ct-team-role">Operations</div>
+                <p>Keeps every outlet stocked, staffed and running the same playbook.</p>
+            </div>
+            <div class="ct-team-card">
+                <div class="ct-team-avatar">D</div>
+                <h4>Divya T.</h4>
+                <div class="ct-team-role">Partnerships</div>
+                <p>Your contact for bulk orders, catering and franchise enquiries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 8. FAQ ============ -->
+    <section class="ct-section ct-faq">
+        <div class="ct-faq-inner">
+            <div class="ct-faq-head ct-reveal">
+                <h2>Before you <span>reach out</span></h2>
+                <p>A few things people usually ask us first.</p>
+            </div>
+
+            <div class="ct-faq-item">
+                <div class="ct-faq-q">How fast do you usually reply?<span class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">Within a day for the contact form, and almost instantly on call during office hours (Mon–Fri, 9:00–6:00).</div>
+            </div>
+
+            <div class="ct-faq-item">
+                <div class="ct-faq-q">Do you take bulk or catering orders?<span class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">Yes — reach out to our Partnerships team through the form or email and we'll get a quote back to you the same day.</div>
+            </div>
+
+            <div class="ct-faq-item">
+                <div class="ct-faq-q">Can I visit an outlet without calling ahead?<span class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">Of course, walk-ins are always welcome at every outlet during office hours — no booking needed.</div>
+            </div>
+
+            <div class="ct-faq-item">
+                <div class="ct-faq-q">Are you hiring?<span class="material-symbols-outlined">add</span></div>
+                <div class="ct-faq-a">We're growing outlets often, so send your resume to admin@gmail.com and Meera's team will follow up.</div>
+            </div>
+        </div>
+    </section>
+
+
+        <footer class="footer-section reveal">
+
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+                </div>
+
+               <p class="footer-des">What's Inside: Fresh Flavors, Tasty Deals, New Menu & More</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button type="submit" class="subscribe">Subscribe</button>
+                </div>
+                <p class="ferror"></p>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Quick Links</h2>
+
+                <div class="store-links">
+                    <a href="404.html">Home</a>
+                    <a href="404.html">About</a>
+                    <a href="404.html">Services</a>
+                    <a href="404.html">Blogs</a>
+                    <a href="404.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Explore</h2>
+
+                <div class="store-links">
+                    <a href="index.html">Our Menu</a>
+                    <a href="menu.html">Burgers & Fries</a>
+                    <a href="menu.html">Pizza & Snacks</a>
+                    <a href="offers.html">Today's Deals</a>
+                    <a href="contact.html">Order Now</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                        
+                            <p class="errorpage"> 25, Daniel Street, Chennai</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p class="errorpage">admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p class="errorpage">+91 09876 54321</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <script src="./js/script.js"></script>
+
     <script>
         // scroll-reveal
-        const ctRevealEls = document.querySelectorAll('.ct-reveal, .ct-reach-card, .ct-find-content, .ct-cta-text, .ct-cta-actions, .ct-chip, .ct-form-img, .ct-form-box');
+        const ctRevealEls = document.querySelectorAll('.ct-reveal, .ct-reach-card, .ct-find-content, .ct-cta-text, .ct-cta-actions, .ct-chip, .ct-form-img, .ct-form-box, .ct-outlets-img, .ct-outlets-text, .ct-team-card, .ct-faq-item');
         const ctObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -788,9 +1223,19 @@
             setTimeout(() => document.getElementById('ctIntroBg').classList.add('ct-in'), 150);
         });
 
-        // staggered delay for reach cards and chips
-        document.querySelectorAll('.ct-reach-grid, .ct-chip-cloud').forEach(group => {
+        // staggered delay for reach cards, chips and team grid
+        document.querySelectorAll('.ct-reach-grid, .ct-chip-cloud, .ct-team-grid').forEach(group => {
             [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
+        });
+
+        // FAQ accordion
+        const ctFaqItems = document.querySelectorAll('.ct-faq-item');
+        ctFaqItems.forEach(item => {
+            item.querySelector('.ct-faq-q').addEventListener('click', () => {
+                const isOpen = item.classList.contains('ct-open');
+                ctFaqItems.forEach(i => i.classList.remove('ct-open'));
+                if (!isOpen) item.classList.add('ct-open');
+            });
         });
 
         // simple JS parallax on the "find us" background

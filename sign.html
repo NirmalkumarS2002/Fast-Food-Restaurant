@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Sign Up</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        :root {
+            --yellow: #FFCC33;
+            --dark: #191919;
+            --dark2: #141212;
+            --cream: #fffaf5;
+            --paper: #fffdf8;
+            --tomato: #e6483a;
+            --line: rgba(25, 25, 25, 0.14);
+        }
+
+        html, body {
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--cream);
+            min-height: 100vh;
+        }
+
+        h1, h2 {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .mono {
+            font-family: "DM Mono", monospace;
+        }
+
+        /* ============ PAGE SHELL: asymmetric split ============ */
+        .page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+        }
+
+        /* ============ LEFT: ticket-style form panel ============ */
+        .panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            order: 1;
+        }
+
+        .ticket {
+            width: 100%;
+            max-width: 440px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            position: relative;
+            box-shadow: 0 24px 50px rgba(25, 25, 25, 0.08);
+        }
+
+        /* punch-hole notches on the sides, like a receipt */
+        .ticket::before,
+        .ticket::after {
+            content: "";
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: var(--cream);
+            border-radius: 50%;
+            top: 168px;
+        }
+
+        .ticket::before { left: -11px; }
+        .ticket::after { right: -11px; }
+
+        .ticket-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 26px 32px 20px;
+        }
+
+        .ticket-head .num {
+            font-size: 11.5px;
+            color: #948a77;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-head .num b {
+            display: block;
+            color: var(--dark);
+            font-size: 15px;
+        }
+
+        .ticket-head .stamp {
+            border: 1.5px solid var(--yellow);
+            color: #a67b00;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transform: rotate(4deg);
+        }
+
+        .ticket-title {
+            padding: 4px 32px 22px;
+        }
+
+        .ticket-title h1 {
+            font-size: 27px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .ticket-title p {
+            color: #74695a;
+            font-size: 13.5px;
+        }
+
+        .perf {
+            border-top: 1.5px dashed var(--line);
+            margin: 0 0 22px;
+        }
+
+        .ticket-tabs {
+            display: flex;
+            gap: 26px;
+            padding: 0 32px;
+            margin-bottom: 24px;
+        }
+
+        .ticket-tabs button {
+            background: none;
+            border: none;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #a89d89;
+            padding: 0 0 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ticket-tabs button.active {
+            color: var(--dark);
+        }
+
+        .ticket-tabs button.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1.5px;
+            width: 100%;
+            height: 3px;
+            background: var(--yellow);
+            border-radius: 3px;
+        }
+
+        .ticket-body {
+            padding: 0 32px 30px;
+        }
+
+        .field-row-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #948a77;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 7px;
+        }
+
+        .field-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1.5px solid var(--line);
+            padding-bottom: 9px;
+            transition: border-color .25s ease;
+        }
+
+        .field-row:focus-within {
+            border-color: var(--yellow);
+        }
+
+        .field-row span.material-symbols-outlined {
+            font-size: 18px;
+            color: #b3a992;
+        }
+
+        .field-row input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14.5px;
+            color: var(--dark);
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .field-row .passeye {
+            cursor: pointer;
+        }
+
+        .field-error {
+            color: var(--tomato);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            font-size: 12px;
+            color: #74695a;
+            line-height: 1.5;
+            margin: 4px 0 22px;
+        }
+
+        .terms input {
+            accent-color: var(--yellow);
+            margin-top: 3px;
+        }
+
+        .terms a {
+            color: var(--dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            color: var(--tomato);
+        }
+
+        .submit {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 15px;
+            background: var(--dark);
+            color: var(--yellow);
+            border: none;
+            border-radius: 30px;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background .25s ease, transform .25s ease;
+        }
+
+        .submit:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        .submit span {
+            transition: transform .25s ease;
+        }
+
+        .submit:hover span {
+            transform: translateX(4px);
+        }
+
+        .or {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 22px 0 18px;
+            color: #b3a992;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .or::before,
+        .or::after {
+            content: "";
+            flex: 1;
+            border-top: 1.5px dashed var(--line);
+        }
+
+        .social {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .social a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 16px;
+            transition: border-color .25s ease, background .25s ease;
+        }
+
+        .social a:hover {
+            border-color: var(--yellow);
+            background: #fff6df;
+        }
+
+        .foot {
+            text-align: center;
+            font-size: 13px;
+            color: #74695a;
+        }
+
+        .foot a {
+            color: var(--tomato);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .foot a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 560px) {
+            .field-row-pair {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ticket-head, .ticket-title, .ticket-tabs, .ticket-body {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+
+            .ticket-title h1 {
+                font-size: 23px;
+            }
+        }
+
+        /* ============ RIGHT: dark stage with oversized wordmark ============ */
+        .stage {
+            position: relative;
+            background: var(--dark);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px clamp(28px, 4vw, 56px);
+            order: 2;
+        }
+
+        .stage-top {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stage-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13.5px;
+            opacity: 0.75;
+            transition: opacity .25s ease;
+        }
+
+        .stage-back:hover {
+            opacity: 1;
+        }
+
+        .stage-back span {
+            font-size: 17px;
+        }
+
+        .stage-logo {
+            position: absolute;
+            left: clamp(28px, 4vw, 56px);
+            top: 25px;
+            z-index: 3;
+        }
+
+        .stage-logo img {
+            width: 128px;
+        }
+
+        /* giant rotated wordmark, mostly outline, sits behind the photo */
+        .wordmark {
+            position: absolute;
+            left: -6%;
+            top: 48%;
+            transform: translateY(-50%) rotate(-7deg);
+            font-family: "Poppins", sans-serif;
+            font-weight: 800;
+            font-size: clamp(90px, 12vw, 170px);
+            line-height: 0.86;
+            letter-spacing: -2px;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.16);
+            z-index: 1;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .stage-photo {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%) rotate(-3deg);
+            width: min(300px, 30vw);
+            border-radius: 46% 46% 50% 50% / 45% 45% 55% 55%;
+            overflow: hidden;
+            border: 6px solid var(--yellow);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .stage-photo img {
+            width: 100%;
+            aspect-ratio: 1 / 1.05;
+            object-fit: cover;
+            display: block;
+        }
+
+        .stage-caption {
+            position: relative;
+            z-index: 3;
+            max-width: 380px;
+        }
+
+        .stage-caption p.tag {
+            color: var(--yellow);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stage-caption h2 {
+            color: #fff;
+            font-size: clamp(24px, 2.6vw, 30px);
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .stage-perks {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .stage-perks div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 13.5px;
+        }
+
+        .stage-perks span.material-symbols-outlined {
+            color: var(--yellow);
+            font-size: 19px;
+        }
+
+        @media (max-width: 900px) {
+            .page {
+                grid-template-columns: 1fr;
+            }
+
+            .panel {
+                order: 2;
+            }
+
+            .stage {
+                order: 1;
+                min-height: 300px;
+            }
+
+            .stage-photo {
+                width: 140px;
+            }
+
+            .wordmark {
+                font-size: 66px;
+            }
+
+            .stage-caption, .stage-perks {
+                display: none;
+            }
+        }
+
+        /* ============ SUCCESS POPUP ============ */
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 18, 18, .65);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .popup.active {
+            display: flex;
+        }
+
+        .popup-box {
+            width: 320px;
+            background: var(--paper);
+            color: var(--dark);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .popup-box .ok-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #fff6df;
+            color: #b58900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 14px;
+        }
+
+        .popup-box h2 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .popup-box p {
+            color: #74695a;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .popup-box button {
+            padding: 11px 34px;
+            border: none;
+            background: var(--dark);
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 13px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        input[type="password"]::-ms-reveal {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="popup" id="popup">
+        <div class="popup-box">
+            <span class="material-symbols-outlined ok-icon">check_circle</span>
+            <h2>You're all set</h2>
+            <p>Account created — click OK to log in.</p>
+            <button id="okBtn">OK</button>
+        </div>
+    </div>
+
+    <div class="page">
+
+        <!-- LEFT: ticket card -->
+        <div class="panel">
+            <div class="ticket">
+
+                <div class="ticket-head">
+                    <div class="num">TICKET NO.<b>#0453</b></div>
+                    <div class="stamp">NEW MEMBER</div>
+                </div>
+
+                <div class="ticket-title">
+                    <h1>Join Stackly</h1>
+                    <p>Create an account to order, save favourites and earn rewards.</p>
+                </div>
+
+                <div class="perf"></div>
+
+                <div class="ticket-tabs">
+                    <button class="active" data-role="Client">Admin</button>
+                    <button data-role="Agent">Customer</button>
+                </div>
+
+                <div class="ticket-body">
+
+                    <div class="field-row-pair">
+                        <div class="field">
+                            <label>Full name</label>
+                            <div class="field-row">
+                                <span class="material-symbols-outlined">person</span>
+                                <input type="text" placeholder="Your name" id="log-name">
+                            </div>
+                            <p class="field-error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label>Phone number</label>
+                            <div class="field-row">
+                                <span class="material-symbols-outlined">call</span>
+                                <input type="tel" placeholder="Your phone" id="log-phone">
+                            </div>
+                            <p class="field-error"></p>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Email address</label>
+                        <div class="field-row">
+                            <span class="material-symbols-outlined">mail</span>
+                            <input type="email" placeholder="you@stackly.com" id="log-email">
+                        </div>
+                        <p class="field-error"></p>
+                    </div>
+
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="field-row">
+                            <span class="material-symbols-outlined">lock</span>
+                            <input type="password" placeholder="Create a password" id="log-pass">
+                            <span class="material-symbols-outlined passeye">visibility_off</span>
+                        </div>
+                        <p class="field-error"></p>
+                    </div>
+
+                    <div class="field">
+                        <label>Confirm password</label>
+                        <div class="field-row">
+                            <span class="material-symbols-outlined">lock</span>
+                            <input type="password" placeholder="Re-enter your password" id="log-conpass">
+                            <span class="material-symbols-outlined passeye">visibility_off</span>
+                        </div>
+                        <p class="field-error"></p>
+                    </div>
+
+                    <label class="terms">
+                        <input type="checkbox" id="log-terms">
+                        <span>I agree to the <a href="404.html">Terms &amp; Conditions</a> and <a href="404.html">Privacy Policy</a></span>
+                    </label>
+
+                    <button class="submit">Create Account<span class="material-symbols-outlined">arrow_right_alt</span></button>
+
+                    <div class="or">or continue with</div>
+
+                    <div class="social">
+                        <a href="404.html"><i class="fa-brands fa-google"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="404.html"><i class="fa-brands fa-apple"></i></a>
+                    </div>
+
+                    <p class="foot">Already have an account? <a href="login.html">Log in</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: dark stage -->
+        <div class="stage">
+            <div class="stage-logo">
+                <a href="index.html"><img src="./src/logo.webp" alt="Stackly logo"></a>
+            </div>
+            <div class="stage-top">
+                <a href="index.html" class="stage-back">Home<span class="material-symbols-outlined">arrow_forward</span></a>
+            </div>
+
+            <div class="wordmark">STACKLY</div>
+
+            <div class="stage-photo">
+                <img src="./src/image_3.webp" alt="Stackly kitchen">
+            </div>
+
+            <div>
+                <div class="stage-caption">
+                    <p class="tag">Fresh · Fast · Delicious</p>
+                    <h2>Sign up once, and every craving's a tap away.</h2>
+                </div>
+                <div class="stage-perks">
+                    <div><span class="material-symbols-outlined">redeem</span>Earn points on every order</div>
+                    <div><span class="material-symbols-outlined">bolt</span>Faster checkout, saved addresses</div>
+                    <div><span class="material-symbols-outlined">local_offer</span>Member-only deals first</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const nameInput = document.querySelector("#log-name");
+        const phoneInput = document.querySelector("#log-phone");
+        const email = document.querySelector("#log-email");
+        const password = document.querySelector("#log-pass");
+        const confirmPassword = document.querySelector("#log-conpass");
+        const termsCheck = document.querySelector("#log-terms");
+        const signBtn = document.querySelector(".submit");
+
+        const roleTabs = document.querySelectorAll(".ticket-tabs button");
+        const eyeIcons = document.querySelectorAll(".passeye");
+        const errorMsgs = document.querySelectorAll(".field-error");
+
+        const popup = document.querySelector("#popup");
+        const okBtn = document.querySelector("#okBtn");
+
+        let selectedRole = "Client";
+
+        roleTabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                roleTabs.forEach((t) => { t.classList.remove("active") });
+                tab.classList.add("active");
+                selectedRole = tab.dataset.role;
+            });
+        });
+
+        eyeIcons.forEach((eye, index) => {
+            eye.addEventListener("click", () => {
+                let input = index === 0 ? password : confirmPassword;
+                if (input.type === "password") {
+                    input.type = "text";
+                    eye.textContent = "visibility";
+                } else {
+                    input.type = "password";
+                    eye.textContent = "visibility_off";
+                }
+            });
+        });
+
+        nameInput.addEventListener("input", () => {
+            nameInput.value = nameInput.value.replace(/[^A-Za-z\s]/g, "");
+        });
+
+        phoneInput.addEventListener("input", () => {
+            phoneInput.value = phoneInput.value.replace(/[^0-9+\s]/g, "");
+        });
+
+        signBtn.addEventListener("click", () => {
+
+            let isvalid = true;
+            let logregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let nameRegex = /^[A-Za-z\s]+$/;
+            let phoneRegex = /^[0-9+\s]{7,15}$/;
+
+            let fn = nameInput.value.trim();
+            let fph = phoneInput.value.trim();
+            let fe = email.value.trim();
+            let fp = password.value.trim();
+            let fcp = confirmPassword.value.trim();
+
+            errorMsgs.forEach((error) => { error.textContent = ""; });
+
+            if (fn == "") {
+                errorMsgs[0].textContent = "Enter your name";
+                isvalid = false;
+            } else if (!nameRegex.test(fn)) {
+                errorMsgs[0].textContent = "Only letters are allowed";
+                isvalid = false;
+            }
+
+            if (fph == "") {
+                errorMsgs[1].textContent = "Enter your phone number";
+                isvalid = false;
+            } else if (!phoneRegex.test(fph)) {
+                errorMsgs[1].textContent = "Enter a valid phone number";
+                isvalid = false;
+            }
+
+            if (fe == "") {
+                errorMsgs[2].textContent = "Enter your email";
+                isvalid = false;
+            } else if (!logregex.test(fe)) {
+                errorMsgs[2].textContent = "Enter a valid email";
+                isvalid = false;
+            }
+
+            if (fp == "") {
+                errorMsgs[3].textContent = "Enter your password";
+                isvalid = false;
+            } else if (fp.length < 6) {
+                errorMsgs[3].textContent = "Password must be at least 6 characters";
+                isvalid = false;
+            }
+
+            if (fcp == "") {
+                errorMsgs[4].textContent = "Confirm your password";
+                isvalid = false;
+            } else if (fp !== fcp) {
+                errorMsgs[4].textContent = "Passwords do not match";
+                isvalid = false;
+            }
+
+            if (!termsCheck.checked) {
+                isvalid = false;
+                termsCheck.parentElement.style.color = "#c0263a";
+            } else {
+                termsCheck.parentElement.style.color = "#74695a";
+            }
+
+            if (isvalid) {
+           
+                    localStorage.setItem("useremail", email.value);
+                    window.location.href = "login.html";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

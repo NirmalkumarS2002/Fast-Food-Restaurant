@@ -1,604 +1,1066 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stackly - About Page Sections</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - About Page Sections</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,-50..200" />
+    <link rel="stylesheet" href="style.css">
 
-<style>
-    /* =========================================================
-       NOTE TO DEV: These are ONLY the 6 content sections for
-       the About page. Navbar and footer are NOT included —
-       paste this block between your existing <header> and
-       <footer> tags. Same theme tokens as the rest of the site.
-    ========================================================= */
 
-    :root{
-        --pcolor:#FFCC33;
-        --dark1:#191919;
-        --dark2:#141212;
-        --cream:#fffaf5;
-        --border:1px solid rgba(128,128,128,0.25);
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
 
-    .ab-section{ font-family:"DM Sans", sans-serif; color:#181818; }
-    .ab-section h1, .ab-section h2, .ab-section h3{ font-family:"Poppins", sans-serif; }
+        
 
-    .ab-eyebrow{
-        display:inline-block;
-        margin-bottom:14px;
-        padding:7px 16px;
-        border:1px solid rgba(255,255,255,0.35);
-        border-radius:30px;
-        font-size:13px;
-        letter-spacing:0.5px;
-    }
+        :root {
+            --pcolor: #FFCC33;
+            --dark1: #191919;
+            --dark2: #141212;
+            --cream: #fffaf5;
+            --border: 1px solid rgba(128, 128, 128, 0.25);
+        }
 
-    .ab-reveal{
-        opacity:0;
-        transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-    .ab-reveal.ab-in{ opacity:1; }
+        .ab-section {
+            font-family: "DM Sans", sans-serif;
+            color: #181818;
+        }
 
-    /* =========== 1. PAGE INTRO BANNER (Ken Burns zoom + text rise) =========== */
+        .ab-section h1,
+        .ab-section h2,
+        .ab-section h3 {
+            font-family: "Poppins", sans-serif;
+        }
 
-    .ab-intro{
-        position:relative;
-        min-height:60vh;
-        display:flex;
-        align-items:center;
-        overflow:hidden;
-        color:white;
-    }
-    .ab-intro-bg{
-        position:absolute; inset:0;
-        background:
-            linear-gradient(90deg, rgba(15,13,13,0.86) 25%, rgba(15,13,13,0.35) 100%),
-            url("https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1800&q=85");
-        background-size:cover;
-        background-position:center;
-        animation: ab-kenburns 14s ease-in-out infinite alternate;
-    }
-    @keyframes ab-kenburns{
-        0%{ transform:scale(1); }
-        100%{ transform:scale(1.12); }
-    }
+        .ab-eyebrow {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 7px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
 
-    .ab-intro-content{
-        position:relative;
-        max-width:1200px;
-        margin:0 auto;
-        padding:100px 30px;
-        transform:translateY(30px);
-    }
-    .ab-intro-content.ab-in{ transform:translateY(0); }
+        .ab-reveal {
+            opacity: 0;
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
 
-    .ab-intro-content .ab-eyebrow{ color:var(--pcolor); border-color:rgba(255,204,51,0.4); }
-    .ab-intro-content h1{
-        font-size:clamp(38px,5vw,60px);
-        font-weight:800;
-        line-height:1.1;
-        margin-bottom:18px;
-        max-width:640px;
-    }
-    .ab-intro-content h1 span{ color:var(--pcolor); }
-    .ab-intro-content p{
-        color:#e5e5e5;
-        font-size:16px;
-        line-height:1.7;
-        max-width:520px;
-    }
+        .ab-reveal.ab-in {
+            opacity: 1;
+        }
 
-    /* =========== 2. OUR JOURNEY (timeline draw-in) =========== */
+        /* =========== 1. PAGE INTRO BANNER (Ken Burns zoom + text rise) =========== */
 
-    .ab-journey{
-        padding:100px 30px;
-        background:var(--cream);
-    }
-    .ab-journey-head{ max-width:600px; margin:0 auto 60px; text-align:center; }
-    .ab-journey-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:14px; }
-    .ab-journey-head p{ color:#666; font-size:15px; line-height:1.7; }
+        .ab-intro {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
 
-    .ab-timeline{
-        max-width:900px;
-        margin:0 auto;
-        position:relative;
-        padding-left:40px;
-    }
-    .ab-timeline::before{
-        content:"";
-        position:absolute;
-        left:9px; top:6px; bottom:6px;
-        width:2px;
-        background:rgba(0,0,0,0.12);
-        transform-origin:top;
-        transform:scaleY(0);
-        transition: transform 1.4s ease;
-    }
-    .ab-timeline.ab-in::before{ transform:scaleY(1); }
+        .ab-intro-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(15, 13, 13, 0.86) 25%, rgba(15, 13, 13, 0.35) 100%),
+                url("./src/about.webp");
+            background-size: cover;
+            background-position: center;
+            animation: ab-kenburns 14s ease-in-out infinite alternate;
+        }
 
-    .ab-t-item{
-        position:relative;
-        padding-bottom:48px;
-        opacity:0;
-        transform:translateX(-20px);
-        transition: opacity .6s ease, transform .6s ease;
-    }
-    .ab-t-item.ab-in{ opacity:1; transform:translateX(0); }
-    .ab-t-item:last-child{ padding-bottom:0; }
+        @keyframes ab-kenburns {
+            0% {
+                transform: scale(1);
+            }
 
-    .ab-t-item::before{
-        content:"";
-        position:absolute;
-        left:-40px; top:2px;
-        width:20px; height:20px;
-        border-radius:50%;
-        background:var(--pcolor);
-        border:4px solid var(--cream);
-        box-shadow:0 0 0 2px rgba(0,0,0,0.12);
-    }
+            100% {
+                transform: scale(1.12);
+            }
+        }
 
-    .ab-t-item h4{ font-size:13px; letter-spacing:1px; color:#999; margin-bottom:6px; }
-    .ab-t-item h3{ font-size:20px; font-weight:700; margin-bottom:8px; }
-    .ab-t-item p{ font-size:14px; color:#666; line-height:1.65; max-width:520px; }
+        .ab-intro-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 30px;
+            transform: translateY(30px);
+        }
 
-    /* =========== 3. MEET THE TEAM (flip cards) =========== */
+        .ab-intro-content.ab-in {
+            transform: translateY(0);
+        }
 
-    .ab-team{
-        padding:100px 30px;
-        background:#fff;
-        text-align:center;
-    }
-    .ab-team-head{ max-width:600px; margin:0 auto 55px; }
-    .ab-team-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:14px; }
-    .ab-team-head p{ color:#666; font-size:15px; line-height:1.7; }
+        .ab-intro-content .ab-eyebrow {
+            color: var(--pcolor);
+            border-color: rgba(255, 204, 51, 0.4);
+        }
 
-    .ab-team-grid{
-        max-width:1100px;
-        margin:0 auto;
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
-        gap:24px;
-    }
+        .ab-intro-content h1 {
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            max-width: 640px;
+        }
 
-    .ab-flip-outer{
-        perspective:1200px;
-        height:340px;
-        opacity:0;
-        transform:translateY(24px);
-        transition: opacity .7s ease, transform .7s ease;
-    }
-    .ab-flip-outer.ab-in{ opacity:1; transform:translateY(0); }
+        .ab-intro-content h1 span {
+            color: var(--pcolor);
+        }
 
-    .ab-flip-inner{
-        position:relative;
-        width:100%; height:100%;
-        transition: transform .7s cubic-bezier(.4,.2,.2,1);
-        transform-style:preserve-3d;
-    }
-    .ab-flip-outer:hover .ab-flip-inner{ transform:rotateY(180deg); }
+        .ab-intro-content p {
+            color: #e5e5e5;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 520px;
+        }
 
-    .ab-flip-front, .ab-flip-back{
-        position:absolute; inset:0;
-        backface-visibility:hidden;
-        border-radius:18px;
-        overflow:hidden;
-    }
-    .ab-flip-front img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .ab-flip-front span{
-        position:absolute; left:0; right:0; bottom:0;
-        background:linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
-        color:white; padding:16px; text-align:left; font-weight:700; font-size:15px;
-    }
+        /* =========== 2. OUR JOURNEY (timeline draw-in) =========== */
 
-    .ab-flip-back{
-        background:var(--dark1);
-        color:white;
-        transform:rotateY(180deg);
-        display:flex; flex-direction:column;
-        align-items:center; justify-content:center;
-        padding:20px;
-        text-align:center;
-    }
-    .ab-flip-back h4{ color:var(--pcolor); font-size:14px; margin-bottom:10px; }
-    .ab-flip-back p{ font-size:13px; color:#ccc; line-height:1.6; }
+        .ab-journey {
+            padding: 100px 30px;
+            background: var(--cream);
+        }
 
-    @media(max-width:900px){ .ab-team-grid{ grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:520px){ .ab-team-grid{ grid-template-columns:1fr; } }
+        .ab-journey-head {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
 
-    /* =========== 4. OUR VALUES (icon rotate-in) =========== */
+        .ab-journey-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
 
-    .ab-values{
-        padding:100px 30px;
-        background:var(--dark1);
-        color:white;
-    }
-    .ab-values-head{ max-width:600px; margin:0 auto 55px; text-align:center; }
-    .ab-values-head h2{ font-size:clamp(28px,3.4vw,42px); font-weight:800; margin-bottom:14px; }
-    .ab-values-head h2 span{ color:var(--pcolor); }
-    .ab-values-head p{ color:#aaa; font-size:15px; line-height:1.7; }
+        .ab-journey-head p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
 
-    .ab-values-grid{
-        max-width:1100px;
-        margin:0 auto;
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
-        gap:22px;
-    }
+        .ab-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
 
-    .ab-value-card{
-        border:1px solid rgba(255,255,255,0.12);
-        border-radius:18px;
-        padding:32px 22px;
-        text-align:center;
-        opacity:0;
-        transform:scale(0.8) rotate(-6deg);
-        transition: opacity .6s ease, transform .6s ease, background .3s ease;
-    }
-    .ab-value-card.ab-in{ opacity:1; transform:scale(1) rotate(0deg); }
-    .ab-value-card:hover{ background:rgba(255,204,51,0.06); }
+        .ab-timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: rgba(0, 0, 0, 0.12);
+            transform-origin: top;
+            transform: scaleY(0);
+            transition: transform 1.4s ease;
+        }
 
-    .ab-value-icon{
-        width:56px; height:56px;
-        margin:0 auto 18px;
-        border-radius:50%;
-        background:var(--pcolor);
-        display:grid; place-items:center;
-        transition: transform .4s ease;
-    }
-    .ab-value-card:hover .ab-value-icon{ transform:rotate(-360deg); }
-    .ab-value-icon span{ font-size:26px; color:#181818; }
+        .ab-timeline.ab-in::before {
+            transform: scaleY(1);
+        }
 
-    .ab-value-card h4{ font-size:16px; margin-bottom:8px; }
-    .ab-value-card p{ font-size:13px; color:#aaa; line-height:1.6; }
+        .ab-t-item {
+            position: relative;
+            padding-bottom: 48px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
 
-    @media(max-width:900px){ .ab-values-grid{ grid-template-columns:repeat(2,1fr); } }
+        .ab-t-item.ab-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    /* =========== 5. BEHIND THE KITCHEN (alternating mask reveal) =========== */
+        .ab-t-item:last-child {
+            padding-bottom: 0;
+        }
 
-    .ab-kitchen{
-        padding:100px 30px;
-        background:var(--cream);
-    }
-    .ab-kitchen-row{
-        max-width:1200px;
-        margin:0 auto 80px;
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:60px;
-        align-items:center;
-    }
-    .ab-kitchen-row:last-child{ margin-bottom:0; }
-    .ab-kitchen-row.ab-reverse{ direction:rtl; }
-    .ab-kitchen-row.ab-reverse > *{ direction:ltr; }
+        .ab-t-item::before {
+            content: "";
+            position: absolute;
+            left: -40px;
+            top: 2px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--pcolor);
+            border: 4px solid var(--cream);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.12);
+        }
 
-    .ab-kitchen-img{
-        border-radius:20px;
-        overflow:hidden;
-        clip-path:inset(0 0 100% 0);
-        transition: clip-path 1s cubic-bezier(.65,0,.35,1);
-    }
-    .ab-kitchen-img.ab-in{ clip-path:inset(0 0 0% 0); }
-    .ab-kitchen-img img{ width:100%; height:360px; object-fit:cover; display:block; }
+        .ab-t-item h4 {
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 6px;
+        }
 
-    .ab-kitchen-text{ opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; }
-    .ab-kitchen-text.ab-in{ opacity:1; transform:translateY(0); }
-    .ab-kitchen-text h4{ font-size:13px; letter-spacing:1px; color:#999; margin-bottom:10px; }
-    .ab-kitchen-text h3{ font-size:clamp(24px,2.8vw,32px); font-weight:800; margin-bottom:14px; }
-    .ab-kitchen-text p{ color:#555; font-size:15px; line-height:1.75; max-width:460px; }
+        .ab-t-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-    @media(max-width:900px){
-        .ab-kitchen-row, .ab-kitchen-row.ab-reverse{ grid-template-columns:1fr; direction:ltr; }
-    }
+        .ab-t-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.65;
+            max-width: 520px;
+        }
 
-    /* =========== 6. ACHIEVEMENTS + JOIN CTA (count-up + pulse) =========== */
+        /* =========== 3. MEET THE TEAM (flip cards) =========== */
 
-    .ab-achieve{
-        position:relative;
-        margin:0 30px 100px;
-        max-width:1200px;
-        margin-left:auto; margin-right:auto;
-        background:var(--dark2);
-        border-radius:28px;
-        padding:70px 40px;
-        color:white;
-        overflow:hidden;
-    }
-    .ab-achieve::after{
-        content:"";
-        position:absolute;
-        width:500px; height:500px;
-        background:radial-gradient(circle, rgba(255,204,51,0.16), transparent 70%);
-        bottom:-220px; left:-150px;
-    }
+        .ab-team {
+            padding: 100px 30px;
+            background: #fff;
+            text-align: center;
+        }
 
-    .ab-achieve-inner{
-        position:relative;
-        display:grid;
-        grid-template-columns:1.1fr 1fr;
-        gap:50px;
-        align-items:center;
-    }
+        .ab-team-head {
+            max-width: 600px;
+            margin: 0 auto 55px;
+        }
 
-    .ab-achieve-stats{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:20px;
-    }
-    .ab-achieve-stat{ text-align:center; }
-    .ab-achieve-num{
-        font-family:"Poppins",sans-serif;
-        font-size:40px;
-        font-weight:800;
-        color:var(--pcolor);
-        display:block;
-    }
-    .ab-achieve-stat p{ font-size:13px; color:#aaa; margin-top:6px; }
+        .ab-team-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
 
-    .ab-achieve-cta h2{ font-size:clamp(26px,3.2vw,36px); font-weight:800; margin-bottom:14px; }
-    .ab-achieve-cta p{ color:#bbb; font-size:15px; line-height:1.7; margin-bottom:28px; max-width:420px; }
+        .ab-team-head p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
 
-    .ab-cta-btn-wrap{ position:relative; display:inline-block; }
-    .ab-cta-btn-wrap::before{
-        content:"";
-        position:absolute; inset:-8px;
-        border-radius:40px;
-        border:2px solid var(--pcolor);
-        opacity:0.7;
-        animation: ab-pulse 2s ease-out infinite;
-    }
-    @keyframes ab-pulse{
-        0%{ transform:scale(1); opacity:0.6; }
-        100%{ transform:scale(1.35); opacity:0; }
-    }
-    .ab-cta-btn{
-        position:relative;
-        display:inline-flex;
-        align-items:center;
-        gap:10px;
-        background:var(--pcolor);
-        color:#181818;
-        font-weight:700;
-        font-size:15px;
-        padding:16px 32px;
-        border-radius:30px;
-        text-decoration:none;
-    }
+        .ab-team-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
 
-    @media(max-width:900px){ .ab-achieve-inner{ grid-template-columns:1fr; } }
+        .ab-flip-outer {
+            perspective: 1200px;
+            height: 340px;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
 
-    @media(max-width:600px){
-        .ab-journey, .ab-team, .ab-values, .ab-kitchen{ padding:70px 20px; }
-        .ab-achieve{ margin:0 16px 70px; padding:50px 24px; }
-    }
-</style>
+        .ab-flip-outer.ab-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ab-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform .7s cubic-bezier(.4, .2, .2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .ab-flip-outer:hover .ab-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .ab-flip-front,
+        .ab-flip-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .ab-flip-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ab-flip-front span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .ab-flip-back {
+            background: var(--dark1);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ab-flip-back h4 {
+            color: var(--pcolor);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .ab-flip-back p {
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        @media(max-width:900px) {
+            .ab-team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:520px) {
+            .ab-team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========== 4. OUR VALUES (icon rotate-in) =========== */
+
+        .ab-values {
+            padding: 100px 30px;
+            background: var(--dark1);
+            color: white;
+        }
+
+        .ab-values-head {
+            max-width: 600px;
+            margin: 0 auto 55px;
+            text-align: center;
+        }
+
+        .ab-values-head h2 {
+            font-size: clamp(28px, 3.4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ab-values-head h2 span {
+            color: var(--pcolor);
+        }
+
+        .ab-values-head p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .ab-values-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .ab-value-card {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            padding: 32px 22px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8) rotate(-6deg);
+            transition: opacity .6s ease, transform .6s ease, background .3s ease;
+        }
+
+        .ab-value-card.ab-in {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        .ab-value-card:hover {
+            background: rgba(255, 204, 51, 0.06);
+        }
+
+        .ab-value-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: var(--pcolor);
+            display: grid;
+            place-items: center;
+            transition: transform .4s ease;
+        }
+
+        .ab-value-card:hover .ab-value-icon {
+            transform: rotate(-360deg);
+        }
+
+        .ab-value-icon span {
+            font-size: 26px;
+            color: #181818;
+        }
+
+        .ab-value-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .ab-value-card p {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        @media(max-width:900px) {
+            .ab-values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* =========== 5. BEHIND THE KITCHEN (alternating mask reveal) =========== */
+
+        .ab-kitchen {
+            padding: 100px 30px;
+            background: var(--cream);
+        }
+
+        .ab-kitchen-row {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ab-kitchen-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .ab-kitchen-row.ab-reverse {
+            direction: rtl;
+        }
+
+        .ab-kitchen-row.ab-reverse>* {
+            direction: ltr;
+        }
+
+        .ab-kitchen-img {
+            border-radius: 20px;
+            overflow: hidden;
+            transition: clip-path 1s cubic-bezier(.65, 0, .35, 1);
+        }
+
+        .ab-kitchen-img.ab-in {
+            clip-path: inset(0 0 0% 0);
+        }
+
+        .ab-kitchen-img img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ab-kitchen-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        .ab-kitchen-text.ab-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ab-kitchen-text h4 {
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .ab-kitchen-text h3 {
+            font-size: clamp(24px, 2.8vw, 32px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ab-kitchen-text p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.75;
+            max-width: 460px;
+        }
+
+        @media(max-width:900px) {
+
+            .ab-kitchen-row,
+            .ab-kitchen-row.ab-reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+        }
+
+        /* =========== 6. ACHIEVEMENTS + JOIN CTA (count-up + pulse) =========== */
+
+        .ab-achieve {
+            position: relative;
+            margin: 0 30px 100px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--dark2);
+            border-radius: 28px;
+            padding: 70px 40px;
+            color: white;
+            overflow: hidden;
+        }
+
+        .ab-achieve::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 204, 51, 0.16), transparent 70%);
+            bottom: -220px;
+            left: -150px;
+        }
+
+        .ab-achieve-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .ab-achieve-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .ab-achieve-stat {
+            text-align: center;
+        }
+
+        .ab-achieve-num {
+            font-family: "Poppins", sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--pcolor);
+            display: block;
+        }
+
+        .ab-achieve-stat p {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 6px;
+        }
+
+        .ab-achieve-cta h2 {
+            font-size: clamp(26px, 3.2vw, 36px);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .ab-achieve-cta p {
+            color: #bbb;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 420px;
+        }
+
+        .ab-cta-btn-wrap {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ab-cta-btn-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 40px;
+            border: 2px solid var(--pcolor);
+            opacity: 0.7;
+            animation: ab-pulse 2s ease-out infinite;
+        }
+
+        @keyframes ab-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1.35);
+                opacity: 0;
+            }
+        }
+
+        .ab-cta-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--pcolor);
+            color: #181818;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 16px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        @media(max-width:900px) {
+            .ab-achieve-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .ab-journey,
+            .ab-team,
+            .ab-values,
+            .ab-kitchen {
+                padding: 70px 20px;
+            }
+
+            .ab-achieve {
+                margin: 0 16px 70px;
+                padding: 50px 24px;
+            }
+        }
+    </style>
 </head>
+
 <body style="background:var(--cream);">
 
-<!-- ============ 1. PAGE INTRO BANNER ============ -->
-<section class="ab-section ab-intro">
-    <div class="ab-intro-bg"></div>
-    <div class="ab-intro-content ab-reveal">
-        <span class="ab-eyebrow">About Stackly</span>
-        <h1>The story behind <span>every plate we serve.</span></h1>
-        <p>From a single street counter to a full kitchen — this is how Stackly turned fast food into food worth waiting for.</p>
-    </div>
-</section>
+    <header class="header">
 
-<!-- ============ 2. OUR JOURNEY ============ -->
-<section class="ab-section ab-journey">
-    <div class="ab-journey-head">
-        <h2>Our journey so far</h2>
-        <p>A few milestones that shaped how Stackly cooks and delivers today.</p>
-    </div>
-    <div class="ab-timeline ab-reveal">
-        <div class="ab-t-item">
-            <h4>2018</h4>
-            <h3>The first counter</h3>
-            <p>Started as a 200 sq. ft. street kitchen serving three burgers and one shake — cooked to order, every time.</p>
-        </div>
-        <div class="ab-t-item">
-            <h4>2020</h4>
-            <h3>Our first full kitchen</h3>
-            <p>Moved into a proper kitchen space, expanded the menu, and began focused hiring for our core cooking team.</p>
-        </div>
-        <div class="ab-t-item">
-            <h4>2022</h4>
-            <h3>Online ordering launched</h3>
-            <p>Brought Stackly online so people could order from home while we kept the same cook-fresh standard.</p>
-        </div>
-        <div class="ab-t-item">
-            <h4>2026</h4>
-            <h3>18 cities and counting</h3>
-            <p>Now delivering across 18 cities, still run by people who taste-test every new item before it goes on the menu.</p>
-        </div>
-    </div>
-</section>
+        <div class="header1">
+            <div class="nav-time">
+                <a href="404.html"><span class="material-symbols-outlined">location_on</span>Office Hours | Mon - Fri |
+                    9:00 -
+                    6:00 </a>
+            </div>
 
-<!-- ============ 3. MEET THE TEAM ============ -->
-<section class="ab-section ab-team">
-    <div class="ab-team-head">
-        <h2>Meet the people behind the food</h2>
-        <p>Hover a card to know who's actually cooking your order.</p>
-    </div>
-    <div class="ab-team-grid">
-        <div class="ab-flip-outer ab-reveal">
-            <div class="ab-flip-inner">
-                <div class="ab-flip-front">
-                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=500&q=80" alt="Head chef">
-                    <span>Ravi Kumar — Head Chef</span>
+            <div class="nav-sotial-icons">
+                <a href="404.html"> <i class="fa-brands fa-whatsapp"></i></a>
+                <a href="404.html"> <i class="fa-brands fa-facebook"></i></a>
+                <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+
+            <div class="nav-contact-details">
+
+                <a href="404.html"><span class="material-symbols-outlined">location_on</span>Chennai,Tamil Nadu</a>
+                <a href="404.html"><span class="material-symbols-outlined">mail</span>admin@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="header2">
+            <a href="index.html" class="company-logo"><img src="./src/logo.webp" alt="Company Logo"
+                    class="logo-img"></a>
+
+            <div class="nav-container">
+
+                <div class="sidebar-logo-container">
+
+                    <a href="index.html"><img src="./src/logo.webp" alt="" class="s-logo"></a>
+                    <span class="material-symbols-outlined close-btn">close</span>
                 </div>
-                <div class="ab-flip-back">
-                    <h4>Head Chef</h4>
-                    <p>12 years in kitchens across South India, leads recipe development for every new menu item.</p>
+
+                <ul class="nav-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html"  class="active">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+            </div>
+
+            <div class="search-sections">
+                <a href="404.html"><span class="material-symbols-outlined">call</span>+91 12345 09876</a>
+                <a href="login.html" class="login-btn"><span class="material-symbols-outlined">person</span>Login</a>
+            </div>
+
+            <div class="menu-container">
+                <a href="login.html"><span class="material-symbols-outlined">person</span></a>
+                <span class="material-symbols-outlined menu-btn">menu</span>
+            </div>
+
+
+        </div>
+
+    </header>
+
+    <!-- ============ 1. PAGE INTRO BANNER ============ -->
+    <section class="ab-section ab-intro">
+        <div class="ab-intro-bg"></div>
+        <div class="ab-intro-content ab-reveal">
+            <span class="ab-eyebrow">About Stackly</span>
+            <h1>The story behind <span>every plate we serve.</span></h1>
+            <p>From a single street counter to a full kitchen — this is how Stackly turned fast food into food worth
+                waiting for.</p>
+        </div>
+    </section>
+
+    <!-- ============ 2. OUR JOURNEY ============ -->
+    <section class="ab-section ab-journey">
+        <div class="ab-journey-head">
+            <h2>Our journey so far</h2>
+            <p>A few milestones that shaped how Stackly cooks and delivers today.</p>
+        </div>
+        <div class="ab-timeline ab-reveal">
+            <div class="ab-t-item">
+                <h4>2018</h4>
+                <h3>The first counter</h3>
+                <p>Started as a 200 sq. ft. street kitchen serving three burgers and one shake — cooked to order, every
+                    time.</p>
+            </div>
+            <div class="ab-t-item">
+                <h4>2020</h4>
+                <h3>Our first full kitchen</h3>
+                <p>Moved into a proper kitchen space, expanded the menu, and began focused hiring for our core cooking
+                    team.</p>
+            </div>
+            <div class="ab-t-item">
+                <h4>2022</h4>
+                <h3>Online ordering launched</h3>
+                <p>Brought Stackly online so people could order from home while we kept the same cook-fresh standard.
+                </p>
+            </div>
+            <div class="ab-t-item">
+                <h4>2026</h4>
+                <h3>18 cities and counting</h3>
+                <p>Now delivering across 18 cities, still run by people who taste-test every new item before it goes on
+                    the menu.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 3. MEET THE TEAM ============ -->
+    <section class="ab-section ab-team">
+        <div class="ab-team-head">
+            <h2>Meet the people behind the food</h2>
+            <p>Hover a card to know who's actually cooking your order.</p>
+        </div>
+        <div class="ab-team-grid">
+            <div class="ab-flip-outer ab-reveal">
+                <div class="ab-flip-inner">
+                    <div class="ab-flip-front">
+                        <img src="./src/team-1.webp"  alt="Sous chef">
+                        <span>Ravi Kumar — Head Chef</span>
+                    </div>
+                    <div class="ab-flip-back">
+                        <h4>Head Chef</h4>
+                        <p>12 years in kitchens across South India, leads recipe development for every new menu item.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-flip-outer ab-reveal">
+                <div class="ab-flip-inner">
+                    <div class="ab-flip-front">
+                        <img src="./src/team-2.webp"
+                            alt="Sous chef">
+                        <span>Meera Nair — Sous Chef</span>
+                    </div>
+                    <div class="ab-flip-back">
+                        <h4>Sous Chef</h4>
+                        <p>Runs the daily kitchen line and trains every new cook on our quality standard.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-flip-outer ab-reveal">
+                <div class="ab-flip-inner">
+                    <div class="ab-flip-front">
+                        <img src="./src/team-3.webp"
+                            alt="Operations lead">
+                        <span>Arjun Das — Operations</span>
+                    </div>
+                    <div class="ab-flip-back">
+                        <h4>Operations Lead</h4>
+                        <p>Makes sure every order leaves the kitchen hot and reaches you inside 30 minutes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ab-flip-outer ab-reveal">
+                <div class="ab-flip-inner">
+                    <div class="ab-flip-front">
+                        <img src="./src/team-4.webp"
+                            alt="Pastry chef">
+                        <span>Anika Roy — Pastry Chef</span>
+                    </div>
+                    <div class="ab-flip-back">
+                        <h4>Pastry Chef</h4>
+                        <p>Handles every shake, dessert and bun that comes out of the Stackly kitchen.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="ab-flip-outer ab-reveal">
-            <div class="ab-flip-inner">
-                <div class="ab-flip-front">
-                    <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=500&q=80" alt="Sous chef">
-                    <span>Meera Nair — Sous Chef</span>
+    </section>
+
+    <!-- ============ 4. OUR VALUES ============ -->
+    <section class="ab-section ab-values">
+        <div class="ab-values-head">
+            <h2>What we <span>stand for</span></h2>
+            <p>The four things we won't compromise on, no matter how big we grow.</p>
+        </div>
+        <div class="ab-values-grid">
+            <div class="ab-value-card ab-reveal">
+                <div class="ab-value-icon"><span class="material-symbols-outlined">eco</span></div>
+                <h4>Fresh Sourcing</h4>
+                <p>Ingredients bought daily from local suppliers, never frozen batches.</p>
+            </div>
+            <div class="ab-value-card ab-reveal">
+                <div class="ab-value-icon"><span class="material-symbols-outlined">schedule</span></div>
+                <h4>Speed with Care</h4>
+                <p>Fast doesn't mean rushed — every order still gets cooked properly.</p>
+            </div>
+            <div class="ab-value-card ab-reveal">
+                <div class="ab-value-icon"><span class="material-symbols-outlined">groups</span></div>
+                <h4>People First</h4>
+                <p>A kitchen team that's fairly paid and genuinely enjoys the work.</p>
+            </div>
+            <div class="ab-value-card ab-reveal">
+                <div class="ab-value-icon"><span class="material-symbols-outlined">verified</span></div>
+                <h4>Honest Quality</h4>
+                <p>What you see in the photo is what shows up at your door.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 5. BEHIND THE KITCHEN ============ -->
+    <section class="ab-section ab-kitchen">
+        <div class="ab-kitchen-row">
+            <div class="ab-kitchen-img ab-reveal">
+                <img src="./src/image_22.webp"
+                    alt="Chef cooking">
+                <br>
+            </div>
+            <div class="ab-kitchen-text ab-reveal">
+                <h4>Behind the counter</h4>
+                <h3>Every order is cooked after you place it</h3>
+                <p>We don't pre-cook and hold food under heat lamps. Your order goes on the grill only once it's placed,
+                    so what reaches you is as fresh as what leaves our kitchen.</p>
+            </div>
+        </div>
+        <div class="ab-kitchen-row ab-reverse">
+            <div class="ab-kitchen-img ab-reveal">
+                <img src="./src/image_23.webp"
+                    alt="Fresh ingredients">
+            </div>
+            <div class="ab-kitchen-text ab-reveal">
+                <h4>Sourcing</h4>
+                <h3>Ingredients picked the same morning</h3>
+                <p>Our produce and meat arrive fresh every morning from vetted local suppliers — nothing sits in storage
+                    for more than a day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 6. ACHIEVEMENTS + JOIN CTA ============ -->
+    <section class="ab-section ab-achieve">
+        <div class="ab-achieve-inner">
+            <div class="ab-achieve-stats">
+                <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="8">0</span>
+                    <p>Years running</p>
                 </div>
-                <div class="ab-flip-back">
-                    <h4>Sous Chef</h4>
-                    <p>Runs the daily kitchen line and trains every new cook on our quality standard.</p>
+                <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="52"
+                        data-suffix="k+">0</span>
+                    <p>Orders served</p>
+                </div>
+                <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="60">0</span>
+                    <p>Kitchen staff</p>
+                </div>
+                <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="18">0</span>
+                    <p>Cities covered</p>
+                </div>
+            </div>
+            <div class="ab-achieve-cta ab-reveal">
+                <h2>Want to taste the story?</h2>
+                <p>Browse the menu and order the same food our team is proud to put their name on.</p>
+                <div class="ab-cta-btn-wrap">
+                    <a href="404.html" class="ab-cta-btn"><span class="material-symbols-outlined">restaurant_menu</span>View
+                        Menu</a>
                 </div>
             </div>
         </div>
-        <div class="ab-flip-outer ab-reveal">
-            <div class="ab-flip-inner">
-                <div class="ab-flip-front">
-                    <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?auto=format&fit=crop&w=500&q=80" alt="Operations lead">
-                    <span>Arjun Das — Operations</span>
+    </section>
+
+    <footer class="footer-section reveal">
+
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
                 </div>
-                <div class="ab-flip-back">
-                    <h4>Operations Lead</h4>
-                    <p>Makes sure every order leaves the kitchen hot and reaches you inside 30 minutes.</p>
+
+                <p class="footer-des">What's Inside: Fresh Flavors, Tasty Deals, New Menu & More</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button type="submit" class="subscribe">Subscribe</button>
+                </div>
+                <p class="ferror"></p>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Quick Links</h2>
+
+                <div class="store-links">
+                    <a href="404.html">Home</a>
+                    <a href="404.html">About</a>
+                    <a href="404.html">Services</a>
+                    <a href="404.html">Blogs</a>
+                    <a href="404.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Explore</h2>
+
+                <div class="store-links">
+                    <a href="index.html">Our Menu</a>
+                    <a href="menu.html">Burgers & Fries</a>
+                    <a href="menu.html">Pizza & Snacks</a>
+                    <a href="offers.html">Today's Deals</a>
+                    <a href="contact.html">Order Now</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+
+                            <p class="errorpage"> 25, Daniel Street, Chennai</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p class="errorpage">admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p class="errorpage">+91 09876 54321</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="ab-flip-outer ab-reveal">
-            <div class="ab-flip-inner">
-                <div class="ab-flip-front">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" alt="Pastry chef">
-                    <span>Anika Roy — Pastry Chef</span>
-                </div>
-                <div class="ab-flip-back">
-                    <h4>Pastry Chef</h4>
-                    <p>Handles every shake, dessert and bun that comes out of the Stackly kitchen.</p>
-                </div>
+
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ============ 4. OUR VALUES ============ -->
-<section class="ab-section ab-values">
-    <div class="ab-values-head">
-        <h2>What we <span>stand for</span></h2>
-        <p>The four things we won't compromise on, no matter how big we grow.</p>
-    </div>
-    <div class="ab-values-grid">
-        <div class="ab-value-card ab-reveal">
-            <div class="ab-value-icon"><span class="material-symbols-outlined">eco</span></div>
-            <h4>Fresh Sourcing</h4>
-            <p>Ingredients bought daily from local suppliers, never frozen batches.</p>
-        </div>
-        <div class="ab-value-card ab-reveal">
-            <div class="ab-value-icon"><span class="material-symbols-outlined">schedule</span></div>
-            <h4>Speed with Care</h4>
-            <p>Fast doesn't mean rushed — every order still gets cooked properly.</p>
-        </div>
-        <div class="ab-value-card ab-reveal">
-            <div class="ab-value-icon"><span class="material-symbols-outlined">groups</span></div>
-            <h4>People First</h4>
-            <p>A kitchen team that's fairly paid and genuinely enjoys the work.</p>
-        </div>
-        <div class="ab-value-card ab-reveal">
-            <div class="ab-value-icon"><span class="material-symbols-outlined">verified</span></div>
-            <h4>Honest Quality</h4>
-            <p>What you see in the photo is what shows up at your door.</p>
-        </div>
-    </div>
-</section>
+    </footer>
 
-<!-- ============ 5. BEHIND THE KITCHEN ============ -->
-<section class="ab-section ab-kitchen">
-    <div class="ab-kitchen-row">
-        <div class="ab-kitchen-img ab-reveal">
-            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="Chef cooking">
-            <br>
-        </div>
-        <div class="ab-kitchen-text ab-reveal">
-            <h4>Behind the counter</h4>
-            <h3>Every order is cooked after you place it</h3>
-            <p>We don't pre-cook and hold food under heat lamps. Your order goes on the grill only once it's placed, so what reaches you is as fresh as what leaves our kitchen.</p>
-        </div>
-    </div>
-    <div class="ab-kitchen-row ab-reverse">
-        <div class="ab-kitchen-img ab-reveal">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Fresh ingredients">
-        </div>
-        <div class="ab-kitchen-text ab-reveal">
-            <h4>Sourcing</h4>
-            <h3>Ingredients picked the same morning</h3>
-            <p>Our produce and meat arrive fresh every morning from vetted local suppliers — nothing sits in storage for more than a day.</p>
-        </div>
-    </div>
-</section>
 
-<!-- ============ 6. ACHIEVEMENTS + JOIN CTA ============ -->
-<section class="ab-section ab-achieve">
-    <div class="ab-achieve-inner">
-        <div class="ab-achieve-stats">
-            <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="8">0</span><p>Years running</p></div>
-            <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="52" data-suffix="k+">0</span><p>Orders served</p></div>
-            <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="60">0</span><p>Kitchen staff</p></div>
-            <div class="ab-achieve-stat ab-reveal"><span class="ab-achieve-num" data-target="18">0</span><p>Cities covered</p></div>
-        </div>
-        <div class="ab-achieve-cta ab-reveal">
-            <h2>Want to taste the story?</h2>
-            <p>Browse the menu and order the same food our team is proud to put their name on.</p>
-            <div class="ab-cta-btn-wrap">
-                <a href="#" class="ab-cta-btn"><span class="material-symbols-outlined">restaurant_menu</span>View Menu</a>
-            </div>
-        </div>
-    </div>
-</section>
+    <script src="./js/script.js"></script>
 
-<script>
-    // scroll-reveal
-    const abRevealEls = document.querySelectorAll('.ab-reveal, .ab-t-item, .ab-value-card, .ab-flip-outer, .ab-kitchen-img, .ab-kitchen-text');
-    const abObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('ab-in');
-                abObserver.unobserve(entry.target);
-            }
+    <script>
+        // scroll-reveal
+        const abRevealEls = document.querySelectorAll('.ab-reveal, .ab-t-item, .ab-value-card, .ab-flip-outer, .ab-kitchen-img, .ab-kitchen-text');
+        const abObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('ab-in');
+                    abObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        abRevealEls.forEach(el => abObserver.observe(el));
+
+        // staggered delay for grid/timeline children
+        document.querySelectorAll('.ab-team-grid, .ab-values-grid').forEach(group => {
+            [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
         });
-    }, { threshold: 0.2 });
-    abRevealEls.forEach(el => abObserver.observe(el));
-
-    // staggered delay for grid/timeline children
-    document.querySelectorAll('.ab-team-grid, .ab-values-grid').forEach(group => {
-        [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.12) + 's'; });
-    });
-    document.querySelectorAll('.ab-timeline').forEach(group => {
-        [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.15) + 's'; });
-    });
-
-    // count-up numbers
-    const abStatEls = document.querySelectorAll('.ab-achieve-num');
-    const abStatObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseFloat(el.dataset.target);
-                const suffix = el.dataset.suffix || "+";
-                let current = 0;
-                const step = Math.max(target / 50, 0.5);
-                const tick = () => {
-                    current += step;
-                    if (current >= target) {
-                        el.textContent = target + suffix;
-                    } else {
-                        el.textContent = Math.floor(current) + suffix;
-                        requestAnimationFrame(tick);
-                    }
-                };
-                tick();
-                abStatObserver.unobserve(el);
-            }
+        document.querySelectorAll('.ab-timeline').forEach(group => {
+            [...group.children].forEach((child, i) => { child.style.transitionDelay = (i * 0.15) + 's'; });
         });
-    }, { threshold: 0.5 });
-    abStatEls.forEach(el => abStatObserver.observe(el));
-</script>
+
+        // count-up numbers
+        const abStatEls = document.querySelectorAll('.ab-achieve-num');
+        const abStatObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.dataset.target);
+                    const suffix = el.dataset.suffix || "+";
+                    let current = 0;
+                    const step = Math.max(target / 50, 0.5);
+                    const tick = () => {
+                        current += step;
+                        if (current >= target) {
+                            el.textContent = target + suffix;
+                        } else {
+                            el.textContent = Math.floor(current) + suffix;
+                            requestAnimationFrame(tick);
+                        }
+                    };
+                    tick();
+                    abStatObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        abStatEls.forEach(el => abStatObserver.observe(el));
+    </script>
 
 </body>
+
 </html>
