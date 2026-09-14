@@ -901,6 +901,9 @@
             .sk-why-inner {
                 grid-template-columns: 1fr;
             }
+             .sk-why-text p{
+                max-width: 80%;
+             }
         }
 
         /* =========== 5. TODAY'S OFFER (banner with shine sweep) =========== */
@@ -909,8 +912,8 @@
             position: relative;
             margin: 90px 30px;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 20px;
+            margin-right: 20px;
             border-radius: 28px;
             overflow: hidden;
             min-height: 340px;
@@ -1133,7 +1136,7 @@
             height: 64px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 18px;
+            margin: -25px auto 18px;
             border: 3px solid var(--pcolor);
         }
 
@@ -1221,33 +1224,6 @@
             position: relative;
         }
 
-        .sk-cta-btn-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
-        .sk-cta-btn-wrap::before {
-            content: "";
-            position: absolute;
-            inset: -8px;
-            border-radius: 40px;
-            border: 2px solid var(--pcolor);
-            opacity: 0.7;
-            animation: sk-pulse 2s ease-out infinite;
-        }
-
-        @keyframes sk-pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: scale(1.35);
-                opacity: 0;
-            }
-        }
-
         .sk-cta-btn {
             position: relative;
             display: inline-flex;
@@ -1260,7 +1236,12 @@
             padding: 18px 38px;
             border-radius: 30px;
             text-decoration: none;
+            transition: .5s ease;
         }
+
+          .sk-cta-btn:hover{
+            transform: translateY(-5px);
+          }
 
         @media(max-width:600px) {
 
@@ -1698,8 +1679,7 @@
             <div class="sk-test-card sk-active">
                 <img src="./src/image_15.webp"
                     alt="Customer">
-                <p>"Ordered on a whim during a late-night craving and it arrived hot in under 25 minutes. The smash
-                    burger is genuinely the best I've had in the city."</p>
+                <p>"Ordered on a whim during a late-night craving and it arrived hot in under 25 minutes."</p>
                 <h5>Arjun Mehta</h5>
                 <span>Chennai</span>
             </div>
@@ -1760,15 +1740,16 @@
 
             </div>
 
+        
             <div class="footer2">
                 <h2>Quick Links</h2>
 
                 <div class="store-links">
-                    <a href="404.html">Home</a>
-                    <a href="404.html">About</a>
-                    <a href="404.html">Services</a>
-                    <a href="404.html">Blogs</a>
-                    <a href="404.html">Contact</a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blogs</a>
+                    <a href="contact.html">Contact</a>
                 </div>
             </div>
 
@@ -1776,11 +1757,11 @@
                 <h2>Explore</h2>
 
                 <div class="store-links">
-                    <a href="index.html">Our Menu</a>
-                    <a href="menu.html">Burgers & Fries</a>
-                    <a href="menu.html">Pizza & Snacks</a>
-                    <a href="offers.html">Today's Deals</a>
-                    <a href="contact.html">Order Now</a>
+                    <a href="404.html">Our Menu</a>
+                    <a href="404.html">Burgers & Fries</a>
+                    <a href="404.html">Pizza & Snacks</a>
+                    <a href="404.html">Today's Deals</a>
+                    <a href="404.html">Order Now</a>
                 </div>
             </div>
 

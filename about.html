@@ -20,9 +20,6 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-
-        
-
         :root {
             --pcolor: #FFCC33;
             --dark1: #191919;
@@ -65,23 +62,36 @@
 
         .ab-intro {
             position: relative;
-            min-height: 60vh;
+            min-height: 56vh;
             display: flex;
             align-items: center;
             overflow: hidden;
             color: white;
+            background: black;
         }
 
-        .ab-intro-bg {
+      
+
+         .ab-intro-bg {
             position: absolute;
             inset: 0;
-            background:
-                linear-gradient(90deg, rgba(15, 13, 13, 0.86) 25%, rgba(15, 13, 13, 0.35) 100%),
-                url("./src/about.webp");
+            background: url("./src/4.webp");
             background-size: cover;
             background-position: center;
-            animation: ab-kenburns 14s ease-in-out infinite alternate;
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+            transition: clip-path 1.3s cubic-bezier(.65, 0, .35, 1);
         }
+
+        .ab-intro-bg.sv-in {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+          .sv-intro-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(15, 13, 13, 0.9) 30%, rgba(15, 13, 13, 0.35) 100%);
+        }
+
 
         @keyframes ab-kenburns {
             0% {
@@ -445,6 +455,12 @@
             }
         }
 
+         @media(max-width:470px) {
+            .ab-values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* =========== 5. BEHIND THE KITCHEN (alternating mask reveal) =========== */
 
         .ab-kitchen {
@@ -536,8 +552,8 @@
             position: relative;
             margin: 0 30px 100px;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 20px;
+            margin-right: 20px;
             background: var(--dark2);
             border-radius: 28px;
             padding: 70px 40px;
@@ -601,33 +617,6 @@
             max-width: 420px;
         }
 
-        .ab-cta-btn-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
-        .ab-cta-btn-wrap::before {
-            content: "";
-            position: absolute;
-            inset: -8px;
-            border-radius: 40px;
-            border: 2px solid var(--pcolor);
-            opacity: 0.7;
-            animation: ab-pulse 2s ease-out infinite;
-        }
-
-        @keyframes ab-pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: scale(1.35);
-                opacity: 0;
-            }
-        }
-
         .ab-cta-btn {
             position: relative;
             display: inline-flex;
@@ -640,12 +629,21 @@
             padding: 16px 32px;
             border-radius: 30px;
             text-decoration: none;
+            transition: .5s ease;
+        }
+
+        .ab-cta-btn:hover {
+            transform: translateY(-5px);
         }
 
         @media(max-width:900px) {
             .ab-achieve-inner {
                 grid-template-columns: 1fr;
             }
+                  .ab-achieve-stat {
+            text-align: start;
+        }
+
         }
 
         @media(max-width:600px) {
@@ -704,7 +702,7 @@
 
                 <ul class="nav-bar">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html"  class="active">About</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                     <li><a href="service.html">Services</a></li>
                     <li><a href="blog.html">Blogs</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -729,14 +727,18 @@
 
     <!-- ============ 1. PAGE INTRO BANNER ============ -->
     <section class="ab-section ab-intro">
-        <div class="ab-intro-bg"></div>
+        <div class="ab-intro-bg" id="svIntroBg"></div>
+          <div class="sv-intro-overlay"></div>
         <div class="ab-intro-content ab-reveal">
             <span class="ab-eyebrow">About Stackly</span>
-            <h1>The story behind <span>every plate we serve.</span></h1>
+            <h1>The story behind <span>every plate.</span></h1> 
             <p>From a single street counter to a full kitchen — this is how Stackly turned fast food into food worth
                 waiting for.</p>
         </div>
     </section>
+
+
+    
 
     <!-- ============ 2. OUR JOURNEY ============ -->
     <section class="ab-section ab-journey">
@@ -782,7 +784,7 @@
             <div class="ab-flip-outer ab-reveal">
                 <div class="ab-flip-inner">
                     <div class="ab-flip-front">
-                        <img src="./src/team-1.webp"  alt="Sous chef">
+                        <img src="./src/team-1.webp" alt="Sous chef">
                         <span>Ravi Kumar — Head Chef</span>
                     </div>
                     <div class="ab-flip-back">
@@ -795,8 +797,7 @@
             <div class="ab-flip-outer ab-reveal">
                 <div class="ab-flip-inner">
                     <div class="ab-flip-front">
-                        <img src="./src/team-2.webp"
-                            alt="Sous chef">
+                        <img src="./src/team-2.webp" alt="Sous chef">
                         <span>Meera Nair — Sous Chef</span>
                     </div>
                     <div class="ab-flip-back">
@@ -808,8 +809,7 @@
             <div class="ab-flip-outer ab-reveal">
                 <div class="ab-flip-inner">
                     <div class="ab-flip-front">
-                        <img src="./src/team-3.webp"
-                            alt="Operations lead">
+                        <img src="./src/team-3.webp" alt="Operations lead">
                         <span>Arjun Das — Operations</span>
                     </div>
                     <div class="ab-flip-back">
@@ -821,8 +821,7 @@
             <div class="ab-flip-outer ab-reveal">
                 <div class="ab-flip-inner">
                     <div class="ab-flip-front">
-                        <img src="./src/team-4.webp"
-                            alt="Pastry chef">
+                        <img src="./src/team-4.webp" alt="Pastry chef">
                         <span>Anika Roy — Pastry Chef</span>
                     </div>
                     <div class="ab-flip-back">
@@ -868,8 +867,7 @@
     <section class="ab-section ab-kitchen">
         <div class="ab-kitchen-row">
             <div class="ab-kitchen-img ab-reveal">
-                <img src="./src/image_22.webp"
-                    alt="Chef cooking">
+                <img src="./src/image_22.webp" alt="Chef cooking">
                 <br>
             </div>
             <div class="ab-kitchen-text ab-reveal">
@@ -881,8 +879,7 @@
         </div>
         <div class="ab-kitchen-row ab-reverse">
             <div class="ab-kitchen-img ab-reveal">
-                <img src="./src/image_23.webp"
-                    alt="Fresh ingredients">
+                <img src="./src/image_23.webp" alt="Fresh ingredients">
             </div>
             <div class="ab-kitchen-text ab-reveal">
                 <h4>Sourcing</h4>
@@ -915,7 +912,8 @@
                 <h2>Want to taste the story?</h2>
                 <p>Browse the menu and order the same food our team is proud to put their name on.</p>
                 <div class="ab-cta-btn-wrap">
-                    <a href="404.html" class="ab-cta-btn"><span class="material-symbols-outlined">restaurant_menu</span>View
+                    <a href="404.html" class="ab-cta-btn"><span
+                            class="material-symbols-outlined">restaurant_menu</span>View
                         Menu</a>
                 </div>
             </div>
@@ -951,11 +949,11 @@
                 <h2>Quick Links</h2>
 
                 <div class="store-links">
-                    <a href="404.html">Home</a>
-                    <a href="404.html">About</a>
-                    <a href="404.html">Services</a>
-                    <a href="404.html">Blogs</a>
-                    <a href="404.html">Contact</a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blogs</a>
+                    <a href="contact.html">Contact</a>
                 </div>
             </div>
 
@@ -963,11 +961,11 @@
                 <h2>Explore</h2>
 
                 <div class="store-links">
-                    <a href="index.html">Our Menu</a>
-                    <a href="menu.html">Burgers & Fries</a>
-                    <a href="menu.html">Pizza & Snacks</a>
-                    <a href="offers.html">Today's Deals</a>
-                    <a href="contact.html">Order Now</a>
+                    <a href="404.html">Our Menu</a>
+                    <a href="404.html">Burgers & Fries</a>
+                    <a href="404.html">Pizza & Snacks</a>
+                    <a href="404.html">Today's Deals</a>
+                    <a href="404.html">Order Now</a>
                 </div>
             </div>
 
@@ -1014,6 +1012,11 @@
     <script src="./js/script.js"></script>
 
     <script>
+
+          window.addEventListener('load', () => {
+            setTimeout(() => document.getElementById('svIntroBg').classList.add('sv-in'), 150);
+        });
+
         // scroll-reveal
         const abRevealEls = document.querySelectorAll('.ab-reveal, .ab-t-item, .ab-value-card, .ab-flip-outer, .ab-kitchen-img, .ab-kitchen-text');
         const abObserver = new IntersectionObserver((entries) => {

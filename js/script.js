@@ -50,14 +50,14 @@ footerBtn.addEventListener("click", (e) => {
     // Empty
     if (email === "") {
         ferror.textContent = "Please enter your email address";
-        ferror.style.color = "black";
+        ferror.style.color = "red";
         return;
     }
 
     // Invalid email
     if (!emailPattern.test(email)) {
         ferror.textContent = "Please enter a valid email address";
-        ferror.style.color = "black";
+        ferror.style.color = "red";
         return;
     }
 

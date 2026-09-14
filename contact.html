@@ -596,34 +596,7 @@
         .ct-cta-actions.ct-in {
             opacity: 1;
         }
-
-        .ct-cta-btn-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
-        .ct-cta-btn-wrap::before {
-            content: "";
-            position: absolute;
-            inset: -8px;
-            border-radius: 40px;
-            border: 2px solid var(--pcolor);
-            opacity: 0.7;
-            animation: ct-pulse 2s ease-out infinite;
-        }
-
-        @keyframes ct-pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: scale(1.35);
-                opacity: 0;
-            }
-        }
-
+     
         .ct-cta-btn {
             position: relative;
             display: inline-flex;
@@ -636,7 +609,13 @@
             padding: 16px 32px;
             border-radius: 30px;
             text-decoration: none;
+            z-index: 1;
+            transition: .5s ease;
         }
+
+               .ct-cta-btn:hover{
+                transform: translateY(-5px);
+               }
 
         .ct-cta-call {
             display: flex;
@@ -646,7 +625,12 @@
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
+            z-index: 1;
+            cursor: pointer;
         }
+          .ct-cta-call:hover{
+            color: var(--pcolor);
+          }
 
         .ct-cta-call span.material-symbols-outlined {
             color: var(--pcolor);
@@ -1024,7 +1008,6 @@
                     <span class="ct-chip">Coimbatore</span>
                     <span class="ct-chip">Madurai</span>
                     <span class="ct-chip">Bengaluru</span>
-                    <span class="ct-chip">Hyderabad</span>
                 </div>
             </div>
             <div class="ct-outlets-img ct-reveal">
@@ -1139,15 +1122,16 @@
 
             </div>
 
+         
             <div class="footer2">
                 <h2>Quick Links</h2>
 
                 <div class="store-links">
-                    <a href="404.html">Home</a>
-                    <a href="404.html">About</a>
-                    <a href="404.html">Services</a>
-                    <a href="404.html">Blogs</a>
-                    <a href="404.html">Contact</a>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blogs</a>
+                    <a href="contact.html">Contact</a>
                 </div>
             </div>
 
@@ -1155,11 +1139,11 @@
                 <h2>Explore</h2>
 
                 <div class="store-links">
-                    <a href="index.html">Our Menu</a>
-                    <a href="menu.html">Burgers & Fries</a>
-                    <a href="menu.html">Pizza & Snacks</a>
-                    <a href="offers.html">Today's Deals</a>
-                    <a href="contact.html">Order Now</a>
+                    <a href="404.html">Our Menu</a>
+                    <a href="404.html">Burgers & Fries</a>
+                    <a href="404.html">Pizza & Snacks</a>
+                    <a href="404.html">Today's Deals</a>
+                    <a href="404.html">Order Now</a>
                 </div>
             </div>
 
