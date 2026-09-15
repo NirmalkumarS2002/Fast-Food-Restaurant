@@ -1599,10 +1599,10 @@
                 width: 280px !important;
             }
 
-              body.menu-open {
-            overflow: hidden;
-            height: 100vh;
-        }
+            body.menu-open {
+                overflow: hidden;
+                height: 100vh;
+            }
 
 
             .sidebar-logo {
@@ -1944,9 +1944,7 @@
                     <div class="panel span-8">
                         <div class="panel-head">
                             <h3>Recent Orders</h3>
-                            <button class="d-btn errorpage"
-                                onclick="showView('orders', document.querySelectorAll('.side-nav button')[1])">View
-                                All</button>
+                            <button class="d-btn errorpage">View All</button>
                         </div>
 
                         <table>
@@ -3085,6 +3083,7 @@
             document.getElementById('topbarTitle').innerText = titles[id];
             document.getElementById('crumbTitle').innerText = titles[id];
             sidebar.classList.remove('vis')
+            document.body.classList.remove("menu-open");
         }
     </script>
 

@@ -1116,6 +1116,7 @@
             overflow: hidden;
             background: var(--card);
             transition: .3s ease;
+            cursor: pointer;
         }
 
         .listing-card:hover {
@@ -2226,7 +2227,7 @@
                     </div>
 
                     <div class="listing-grid">
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_6.webp" alt="Double Smash Burger">
                                 <span class="l-tag">Available</span>
@@ -2245,7 +2246,7 @@
                             </div>
                         </div>
 
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_7.webp" alt="Loaded Cheese Fries">
                                 <span class="l-tag">Low Stock</span>
@@ -2263,7 +2264,7 @@
                             </div>
                         </div>
 
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_8.webp" alt="Pepperoni Pizza">
                                 <span class="l-tag">Available</span>
@@ -2281,7 +2282,7 @@
                             </div>
                         </div>
 
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_9.webp" alt="Crispy Chicken Wrap">
                                 <span class="l-tag">Sold Out</span>
@@ -2299,7 +2300,7 @@
                             </div>
                         </div>
 
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_10.webp" alt="Cookies & Cream Shake">
                                 <span class="l-tag">Available</span>
@@ -2317,7 +2318,7 @@
                             </div>
                         </div>
 
-                        <div class="listing-card">
+                        <div class="listing-card errorpage">
                             <div class="l-img">
                                 <img src="./src/image_2.webp" alt="Classic Smash Burger">
                                 <span class="l-tag">Available</span>
@@ -3194,6 +3195,7 @@
             document.getElementById('topbarTitle').innerText = titles[id];
             document.getElementById('crumbTitle').innerText = titles[id];
             sidebar.classList.remove('vis')
+            document.body.classList.remove("menu-open");
         }
     </script>
 
